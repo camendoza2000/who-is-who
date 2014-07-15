@@ -1,0 +1,28 @@
+// Place all the styles related to the Wellcomes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+	background-color: blue;
+}
+
+.top{ 
+	background-color: red;
+	width: 25px;
+	height: 100px;
+}
+
+#imagen{
+	width: 25px;
+	height: 80px;
+	margin: auto;
+}
+
+
+#label{
+	width: 15px;
+	height: 70px;
+	border-radius: 10px;
+	background-color: white;
+	border: 3px, solid black;
+}
