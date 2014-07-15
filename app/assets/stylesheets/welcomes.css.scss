@@ -3,13 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-	background-color: blue;
+	background-color: #5882FA;
 }
 
 .top{ 
 	position: relative;
-	//background-color: red;
-	//width: 50%;
 	height: 20%;
 }
 
@@ -33,8 +31,8 @@ body{
 
 #show{
 	background-color: white;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 15px;
+	margin-right: 15px;
 	height: 70%;
 	
 
@@ -53,7 +51,7 @@ body{
 }
 
 #panel{
-	background-color: red;
+	background-color: white;
 	width: 26%;
 	height: 60%;
 	border: 3px solid gray;
@@ -74,7 +72,7 @@ body{
 }
 
 #photo_show{
-	background-color: green;
+	background-color: white;
 	position: relative;
 	float: right;
 
@@ -82,5 +80,5 @@ body{
 
 #photo_format{
 	width: 123px;
-	//height: 100px;
+	
 }
