@@ -7,10 +7,36 @@ body{
 }
 
 .top{ 
-	position: relative;
 	height: 20%;
+	position: relative;
 }
 
+#banner{
+	background-color: gray;
+	border-radius: 7px;
+	border: 5px solid black;
+	float: right;
+	height: 75px;
+	margin-right: 20%;
+	width: 220px;
+}
+
+#fancy{
+	font-family: Arial, sans-serif;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#title{
+	color: red;
+	font-family: Verdana, sans-serif;
+	font-size: 25px;
+	line-height: 75px;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+
+}
 
 #logo{
 	display: block;
@@ -18,67 +44,38 @@ body{
 	margin: left;
 }
 
-
-#baner{
-	float: right;
-	margin-right: 20%;
-	width: 220px;
-	height: 75px;
-	border-radius: 7px;
-	background-color: gray;
-	border: 5px solid black;
-}
-
-#show{
-	background-color: white;
-	margin-left: 15px;
-	margin-right: 15px;
-	height: 70%;
-	
-
-}
-
-// kefale = head in geek
-#kefale{
-	font-family: Verdana, sans-serif;
-	font-size: 25px;
-	color: red;
-	text-align: center;
-	vertical-align: middle;
-	line-height: 75px;
-	position: relative;
+#no-style-list{
+	font-size: 1.3em;
+	list-style-type: none;
 
 }
 
 #panel{
 	background-color: white;
-	width: 26%;
-	height: 60%;
 	border: 3px solid gray;
-	position: relative;
 	float: left;
-}
-
-#fansy{
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 1.5em;
-}
-
-#no_style_list{
-	list-style-type: none;
-	font-size: 1.3em;
-
-}
-
-#photo_show{
-	background-color: white;
+	height: 60%;
 	position: relative;
-	float: right;
-
+	width: 26%;
 }
 
-#photo_format{
+#photo-format{
 	width: 123px;
-	
 }
+
+#photo-show{
+	background-color: white;
+	float: right;
+	position: relative;
+
+}
+
+
+#show{
+	background-color: white;
+	height: 70%;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+
