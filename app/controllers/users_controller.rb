@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+
   def new
     @user = User.new
   end
 
   def create
-    # render plain: params[:user].inspect
+    
     @user = User.new(user_params)
 
     if @user.save
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    
   end
 
   def index
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    
   end
 
   def update
