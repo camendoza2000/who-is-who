@@ -1,22 +1,33 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-   test "the truth" do
-     assert true
-   end
-
-   test "should not save user without name" do
+   
+   test "no name user" do
    	user = User.new
    	assert_not user.save, "Saved the user without name"
  	 end
 
-   test "ahouls report error" do
-    # some_undefines_variable is not defined elsewhere in the test case
-    some_undefines_variable
-    assert true
+   test "save user" do
+    user = User.new
+    assert user.new_record?, "User not saved"
    end
-end
 
-class User < ActiveRecord::Base
-  validates :name, presence: true
+   test "delete user" do
+    user = User.new
+    user.destroy
+    assert user.destroy, "User not deleted"
+   end
+
+   test "delete nonexistent user" do
+   user = user.destroy
+   
+   end
+
+   test "update user" do
+   	user = User.new
+   	assert user.update, "User not updated"
+   end
+
+
+
 end
