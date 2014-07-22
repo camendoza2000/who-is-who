@@ -14,23 +14,21 @@ class UserTest < ActiveSupport::TestCase
    end
 
    test "delete user" do 
-    count = User.count
+    counter_user = User.count
     user = users(:one)
     user.save
     user.destroy
-    assert count -1 == User.count, "User not deleted" 
+    assert counter_user -1 == User.count, "User not deleted" 
    end
 
    test "delete nonexistent user" do 
-    ids = []
+    counter_user = User.count
     no_user = User.new
-    for user in User.all
-      assert no_user.id != user.id
-    end
+    no_user.destroy
+    assert counter_user == User.count, "User not deleted" 
    end
 
 
-     
     test "update user" do 
     user = users(:one)
     user.name = "hi"

@@ -10,6 +10,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+
 class ActionDispatch::IntegrationTest
 	# Make the Capybara DSL avaliable in all integration tests
 	include Capybara::DSL
