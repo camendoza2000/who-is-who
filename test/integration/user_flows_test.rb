@@ -7,11 +7,33 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "create user" do
-  #	counter_user = User.count
-  	visit "/users/new"
-  	fill_in :user_name, :with => "example"
+   	visit "/users/new"
+	  fill_in :user_name, :with => "example" 
   	click_button "Create User"
-  #	assert counter_user + 1 == User.count
+    click_link "Back"
+  	assert counter_user + 1 == User.count
   end
+
+
+  test "show user" do
+    visit "/users"
+    #click_link "Show"
+    first(:link, "Show").click
+  end
+
+  test "edit user" do
+    visit "/users"
+    #click_link "Edit"
+    first(:link, "Edit").click
+    fill_in :user_name, :with => "name" 
+    click_button "Update User"
+  end
+
+  test "delete user" do
+    visit "/users"
+    #click_link "Delete"
+    first(:link, "Delete").click
+  end
+
 
 end

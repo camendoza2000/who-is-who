@@ -5,3 +5,12 @@ one:
 
 two:
   name: MyString
+
+
+
+#<% 20.times do |n| %>
+#user_<% n %>:
+#  name: <% "user#{n}" %>
+
+#<% end %>
+
