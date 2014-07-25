@@ -41,7 +41,9 @@ end
     #show_link = path 
     #assert path == show_link
     #page.assert_selector("p", :text => "Nombre: cosa", :visible => true)
-    assert page.has_text?("My") 
+    sleep(2)
+    assert page.has_text?("User1") #:exact => true
+
   end
 
   test "edit user" do
@@ -49,15 +51,15 @@ end
     first(:link, "Edit").click
     fill_in :user_name, :with => "name" 
     click_button "Update User"
-    click_link "Back"
-    assert page.assert_selector("td",:text => "name", :visible => true)
+    #click_link "Back"
+    assert page.has_text?("name")
   end
 
   test "delete user" do
     visit "/users"
     first(:link, "Delete").click
     accept_alert()
-    assert find("tr", text: "MyString")
+    assert_not page.has_content?("User1")
    end
 end
 
