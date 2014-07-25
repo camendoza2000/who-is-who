@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: User2
+
+two:
+  name: User1
+
+
+
+#<% 20.times do |n| %>
+#user_<% n %>:
+#  name: <% "user#{n}" %>
+
+#<% end %>
+

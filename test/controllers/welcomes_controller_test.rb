@@ -5,6 +5,8 @@ class WelcomesControllerTest < ActionController::TestCase
     @welcome = welcomes(:one)
   end
 
+=begin
+
   test "should get index" do
     get :index
     assert_response :success
@@ -46,4 +48,6 @@ class WelcomesControllerTest < ActionController::TestCase
 
     assert_redirected_to welcomes_path
   end
+
+=end
 end
