@@ -42,7 +42,7 @@ end
     #assert path == show_link
     #page.assert_selector("p", :text => "Nombre: cosa", :visible => true)
     sleep(2)
-    assert page.has_text?("User1") #:exact => true
+    assert page.has_text?("name") #:exact => true
 
   end
 
