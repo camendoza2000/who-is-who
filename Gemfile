@@ -40,3 +40,4 @@ gem 'spring',        group: :development
 
 gem "capybara"
 gem "selenium-webdriver"
+gem "paperclip"
