@@ -7,9 +7,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
 
   def creation()
-     visit "/users/new"
-      fill_in :user_name, :with => "example" 
-      click_button "Create User"
+    visit "/users/new"
+    fill_in :user_name, :with => "example" 
+    click_button "Create User"
   end
 
   def edit_user()
@@ -21,9 +21,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "create user" do
     creation()
-   	assert page.has_content?("example") 
-    
-	end
+    assert page.has_content?("example") 
+
+  end
 
   test "check user" do
     creation()

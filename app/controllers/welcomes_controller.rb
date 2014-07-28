@@ -4,7 +4,7 @@ class WelcomesController < ApplicationController
   # GET /welcomes
   # GET /welcomes.json
   def index
-    @welcomes = Welcome.all
+    @users = User.all
   end
 
   # GET /welcomes/1
@@ -60,6 +60,8 @@ class WelcomesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
