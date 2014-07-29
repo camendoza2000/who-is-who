@@ -1,6 +1,6 @@
 module WelcomesHelper
 	
-	def how_much_rows
+	def row_count
 		user_count = @users.count 
 		if user_count % 4 == 0
 			return user_count / 4

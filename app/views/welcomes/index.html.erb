@@ -32,7 +32,7 @@
 
     <table>
       <% m = 0 %>
-      <% for i in 1..how_much_rows %>
+      <% for i in 1..row_count %>
       <tr>
           <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
         <td>
