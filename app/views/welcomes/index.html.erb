@@ -36,7 +36,8 @@
       <tr>
           <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
         <td>
-           <%= user.name %>
+          <%= link_to user.name, user %>
+           
         </td>
           <% end %>
          <% m += 4 %>
