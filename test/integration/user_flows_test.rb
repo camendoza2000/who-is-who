@@ -6,47 +6,38 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
 
-  def creation()
-    visit "/users/new"
+  def set_name_avatar()
     fill_in :user_name, :with => "example" 
-    #click_on "#user_avatar"
     attach_file "user_avatar", File.expand_path("app/assets/images/missing.png")
-    #fill_in :user_avatar, :with => "camendoza/Downloads/images.jpeg"
-    #post :change_avatar, :avatar => fixture_file_upload('/files/spongebob.png', 'image/png')
-    click_button "Create User"
-  end
-
-  def edit_user()
-    first(:link, "Edit").click
-    fill_in :user_name, :with => "name" 
-    click_button "Update User"
-    assert page.has_text?("name")
   end
 
 
   test "create user" do
-    creation()
+    visit "/users/new"
+    set_name_avatar()
+    click_button "Create User"
     assert page.has_content?("example") 
 
   end
 
-  test "check user" do
-    creation()
-    click_link "Back"
-    assert page.has_content?("example") 
-  end
-
+  
 
   test "show user" do
     visit "/users"
     first(:link, "Show").click
-    assert page.has_text?("name") 
+    assert page.has_text?("example") 
   end
+
 
   test "edit user" do
     visit "/users"
-    edit_user()
+    first(:link, "Edit").click
+    set_name_avatar()
+    click_button "Update User"
+    first(:link, "Show").click
+    assert page.has_text?("example")
   end
+
 
   test "delete user" do
     visit "/users"
@@ -55,13 +46,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_not page.has_content?("User1")
    end
 
-=begin
-  test "prueba" do
-    visit "/users"
-    first(:link, "Show").click
-    edit_user()
-  end
-=end
 
 end
 
