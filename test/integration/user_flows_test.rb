@@ -9,6 +9,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   def creation()
     visit "/users/new"
     fill_in :user_name, :with => "example" 
+    #click_on "#user_avatar"
+    attach_file "user_avatar", File.expand_path("app/assets/images/missing.png")
+    #fill_in :user_avatar, :with => "camendoza/Downloads/images.jpeg"
+    #post :change_avatar, :avatar => fixture_file_upload('/files/spongebob.png', 'image/png')
     click_button "Create User"
   end
 
@@ -18,6 +22,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     click_button "Update User"
     assert page.has_text?("name")
   end
+
 
   test "create user" do
     creation()
@@ -50,11 +55,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_not page.has_content?("User1")
    end
 
+=begin
   test "prueba" do
     visit "/users"
     first(:link, "Show").click
     edit_user()
   end
+=end
 
 end
 

@@ -35,12 +35,11 @@
       <% for i in 1..row_count %>
       <tr>
           <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
-        <td>
-          <%= link_to user.name, user %>
-           
-        </td>
+            <td>
+              <%= image_tag user.avatar.url(:thumb) %>
+            </td>
           <% end %>
-         <% m += 4 %>
+          <% m += 4 %>
 
       </tr>
       <% end %>   
