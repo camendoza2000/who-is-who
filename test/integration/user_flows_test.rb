@@ -54,12 +54,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     click_link "Edit"
     attach_file "user_avatar", File.expand_path("app/assets/images/slender_man.jpg")    
     click_button "Update User"
-    #first(:link, "Delete").click
-    #accept_alert()
-    #first(:link, "Delete").click
-    #accept_alert()
-    #first(:link, "Show").click
-    sleep(1)
     page.all("a")[-4].click 
     assert_not initial_avatar == 
   end
