@@ -6,25 +6,24 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
 
-  def set_name_avatar()
-    fill_in :user_name, :with => "example" 
-    attach_file "user_avatar", File.expand_path("app/assets/images/missing.png")
+  def set_name_avatar(name = "user", file_route = "app/assets/images/missing.png")
+    fill_in :user_name, :with => name
+    attach_file "user_avatar", File.expand_path(file_route)
   end
 
 
   test "create user" do
     visit "/users/new"
-    set_name_avatar()
+    set_name_avatar("example")
     click_button "Create User"
     assert page.has_content?("example") 
 
   end
 
-  
 
-  test "show user" do
+ test "show user" do
     visit "/users"
-    first(:link, "Show").click
+    page.all("a")[-4].click
     assert page.has_text?("example") 
   end
 
@@ -32,10 +31,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "edit user" do
     visit "/users"
     first(:link, "Edit").click
-    set_name_avatar()
+    set_name_avatar("name")
     click_button "Update User"
     first(:link, "Show").click
-    assert page.has_text?("example")
+    assert page.has_text?("name")
   end
 
 
@@ -46,6 +45,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_not page.has_content?("User1")
    end
 
+=begin
   test "change avatar" do
     visit "/users/new"
     set_name_avatar()
@@ -57,8 +57,24 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     page.all("a")[-4].click 
     assert_not initial_avatar == 
   end
+=end
 
-   
+#=begin
+  test "user without avatar" do
+    visit "/users/new"
+   set_name_avatar(name = "no avatar", file_route = "")
+    click_button "Create User"
+    assert page.has_content?("Missing")
+  end
+#=end
+
+  test "no image avatar" do
+    visit "/users/new"
+    set_name_avatar("no avatar", "app/assets/images/test.txt")
+    click_button ("Create User")
+  end
+
+
 end
 
 
