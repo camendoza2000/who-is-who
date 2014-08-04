@@ -59,14 +59,15 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 =end
 
-#=begin
+=begin
   test "user without avatar" do
     visit "/users/new"
-   set_name_avatar(name = "no avatar", file_route = "")
+    set_name_avatar(name = "no avatar", file_route = )
+    fill_in :user_name, :with => "no avatar"     
     click_button "Create User"
     assert page.has_content?("Missing")
   end
-#=end
+=end
 
   test "no image avatar" do
     visit "/users/new"
@@ -75,6 +76,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
 
-end
+end 
 
 

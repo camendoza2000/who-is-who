@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 
-# Ignore avarts
+# Ignore avartars
 public/system/* 
