@@ -38,28 +38,5 @@ class UserTest < ActiveSupport::TestCase
 
   end
 
-  #should have_attached_file(:avatar)
-  #should validate_attachment_presence(:avatar)
-  #should validate_attachment_content_type(:avatar).
-  #             allowing('image/png', 'image/gif').
-  #             rejecting('text/plain', 'text/xml')
-  #should validate_attachment_size(:avatar).less_than(2.megabytes)
-
-  #test "have attached file" do
-  #  user = User.new
-  #  user.name = "example"
-  #  assert user.have_attached_file(:avatar)
-  #end
-
-  #descibe User do
-  #  it {should have_attached_file(:avatar)}
-  #end
-
-  test "no avatar user" do
-    user = User.new
-    user.name = "no avatar"
-    user.save
-    
-  end
 
 end

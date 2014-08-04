@@ -12,6 +12,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
 
+
+
   test "create user" do
     visit "/users/new"
     set_name_avatar("example")
@@ -44,36 +46,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     accept_alert()
     assert_not page.has_content?("User1")
    end
-
-=begin
-  test "change avatar" do
-    visit "/users/new"
-    set_name_avatar()
-    click_button "Create User"
-    initial_avatar = 
-    click_link "Edit"
-    attach_file "user_avatar", File.expand_path("app/assets/images/slender_man.jpg")    
-    click_button "Update User"
-    page.all("a")[-4].click 
-    assert_not initial_avatar == 
-  end
-=end
-
-=begin
-  test "user without avatar" do
-    visit "/users/new"
-    set_name_avatar(name = "no avatar", file_route = )
-    fill_in :user_name, :with => "no avatar"     
-    click_button "Create User"
-    assert page.has_content?("Missing")
-  end
-
-  test "no image avatar" do
-    visit "/users/new"
-    set_name_avatar("no avatar", "app/assets/images/test.txt")
-    click_button ("Create User")
-  end
-=end
 
   test "user without avatar" do
     visit "/users/new"
