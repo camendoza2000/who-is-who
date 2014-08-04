@@ -67,14 +67,34 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     click_button "Create User"
     assert page.has_content?("Missing")
   end
-=end
 
   test "no image avatar" do
     visit "/users/new"
     set_name_avatar("no avatar", "app/assets/images/test.txt")
     click_button ("Create User")
   end
+=end
 
+  test "user without avatar" do
+    visit "/users/new"
+    fill_in :user_name, :with => "no avatar"
+    click_button "Create User"
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "no image attached" do
+    visit "/users/new"
+    set_name_avatar("no image", "app/assets/test.txt")
+    click_button "Create User"
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "corrupted image" do
+    visit "/users/new"
+    set_name_avatar("false image", "app/assets/false_image.png")
+    click_button "Create User"
+    assert page.assert_selector("div.field_with_errors")
+  end
 
 end 
 
