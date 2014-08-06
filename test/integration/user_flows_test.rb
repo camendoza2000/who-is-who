@@ -28,12 +28,18 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "user has avatar" do
     creation("user with avatar")
-    #page.assret_selector(:xpath "//img[@src = 'app/assets/images/missing.png']") 
-    #page.find("#avatar")["src"].should have_content("missing.png") #ERRROR!!!!!
-    #find("p" + " img")["src"].include?("app/assets/images/missing.png").should true #ERRRRoR!!!
-    #assert page.has_selector?("img", :visible => true) #assert
-    #assert page.assert_selector("img", :visible => true) #assert
-    page.find("img")["src"].assert_text("missing")
+    image = page.find("img")["src"]
+    assert image.include? "missing.png"
+  end
+
+  test "edit avatar" do
+    creation("avatar")
+    click_link "Edit"
+    attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
+    click_button "Update User"
+    find("tr", :text => "avatar").click_link("Show")
+    image = page.find("img")["src"]
+    assert image.include? "slenderman.jpg"
   end
 
   test "show user" do
