@@ -39,7 +39,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     click_button "Update User"
     find("tr", :text => "avatar").click_link("Show")
     image = page.find("img")["src"]
-    assert image.include? "slenderman.jpg"
+    assert_not image.include? "missing.png"
   end
 
   test "show user" do
