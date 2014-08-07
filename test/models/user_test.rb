@@ -10,7 +10,6 @@ class UserTest < ActiveSupport::TestCase
    test "save user" do 
     user = User.new
     user.name = "cosa"
-    #user.avatar = File.expand_path("app/assets/images/slender_man.jpg")  
     assert user.save, "User not saved"
    end
 
