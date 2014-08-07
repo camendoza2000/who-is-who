@@ -36,7 +36,7 @@
       <tr>
           <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
             <td>
-              <%= image_tag user.avatar.url(:thumb) %>
+              <%= link_to image_tag(user.avatar.url(:thumb)), user  %>
             </td>
           <% end %>
           <% m += 4 %>
@@ -44,7 +44,7 @@
       </tr>
       <% end %>   
     </table>
-
+z
   </div>
 
 
