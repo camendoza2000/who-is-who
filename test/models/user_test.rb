@@ -2,14 +2,14 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
    
-   test "no name user" do 
-   	user = User.new
-   	assert_not user.save, "Saved the user without name"
- 	 end
+  test "no name user" do 
+    user = User.new
+    assert_not user.save, "Saved the user without name"
+  end
 
    test "save user" do 
     user = User.new
-    user.name = "cosa"  
+    user.name = "cosa"
     assert user.save, "User not saved"
    end
 
@@ -29,12 +29,13 @@ class UserTest < ActiveSupport::TestCase
    end
 
 
-    test "update user" do 
+  test "update user" do 
     user = users(:one)
     user.name = "hi"
     user.save
     assert user.name == "hi", "User don't update" 
 
-   end
+  end
+
 
 end

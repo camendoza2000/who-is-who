@@ -27,40 +27,24 @@
     </ul>
   </div>
 
+
   <div id="photo-show">
+
     <table>
+      <% m = 0 %>
+      <% for i in 1..row_count %>
       <tr>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
+          <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
+            <td>
+              <%= image_tag user.avatar.url(:thumb) %>
+            </td>
+          <% end %>
+          <% m += 4 %>
+
       </tr>
-
-      <tr>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-      </tr>
-
-      <tr>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-        <td> <img id="photo-format" src="http://upload.wikimedia.org/wikipedia/commons/2/22/Turkish_Van_Cat.jpg"></td>
-      </tr>
-
-
+      <% end %>   
     </table>
+
   </div>
 
 

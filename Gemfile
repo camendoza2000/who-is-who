@@ -38,5 +38,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "capybara"
-gem "selenium-webdriver"
+gem "paperclip"
+
+
+group :development, :test do
+	gem "capybara"
+	gem "selenium-webdriver"
+end
