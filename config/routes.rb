@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   resources :users
   resources :welcomes
+  resources :interests
 
-  resources :welcomes do
+=begin
+resources :welcomes do
     resources :users
   end
+=end
+
   
 
   # The priority is based upon order of creation: first created -> highest priority.
