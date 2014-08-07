@@ -3,13 +3,7 @@ Rails.application.routes.draw do
   resources :welcomes
   resources :interests
 
-=begin
-resources :welcomes do
-    resources :users
-  end
-=end
 
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
