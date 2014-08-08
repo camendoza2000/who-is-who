@@ -2,3 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#profile-show{
+  background-color: white;
+  position: relative;
+  width: 750px;
+  height: 70%;
+}
+
+#profile-panel{
+  background-color: #F2F2F2;
+  border: 3px solid gray;
+  float: right;
+  height: 60%;
+  position: relative;
+  width: 31%;
+}

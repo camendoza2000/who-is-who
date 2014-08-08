@@ -11,6 +11,7 @@
   <br>
 
 <div id="show" >
+
   <div id="panel">
     <p id="fancy">Who's Who</p>
     <form>
@@ -27,41 +28,24 @@
     </ul>
   </div>
 
-<!-- 
-  <div id="photo-show">
+    <div id="photo-show">
 
-    <table>
-      <% m = 0 %>
-      <% for i in 1..row_count %>
-      <tr>
-          <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
-            <td>
-              <%= link_to image_tag(user.avatar.url(:thumb)), user  %>
-            </td>
-          <% end %>
-          <% m += 4 %>
+      <table>
+        <% m = 0 %>
+        <% for i in 1..row_count %>
+        <tr>
+            <% @users.drop(m).each_with_index do |user, m| break if m == 7 %>
+              <td>
+                <%= image_tag(user.avatar.url(:thumb))  %>
+              </td>
+            <% end %>
+            <% m += 7 %>
 
-      </tr>
-      <% end %>   
-    </table>
+        </tr>
+        <% end %>   
+      </table>
 
-  </div>
--->
-
-  
-  
-  <div id="perfil-show">
-    <img id = "photo-format" src="http://hdwallpaper.freehdw.com/0008/animals_widewallpaper_cat_74664.jpg">  
-  </div>
-
-  <div id="perfil-panel">
-    <strong>Nombre</strong>
-    <p> blah blah </p>
-
-  </div>
-
+    </div>
 </div>
-
-
 
 </body>

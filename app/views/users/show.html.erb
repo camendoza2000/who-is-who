@@ -1,10 +1,11 @@
-<p>
-  <strong>Nombre:</strong>
-  <%= @user.name %><br>
-  <%= image_tag @user.avatar.url(:medium)%><br>
 
 
-</p>
+<div id="profile-show">
+  <%= image_tag @user.avatar.url(:medium)%>
 
-<%= link_to "Edit", edit_user_path(@user) %>
-<%= link_to "Back", users_path %>
+  <div id="profile-panel">
+    <strong> Nombre: </strong>
+    <p>  <%= @user.name %> </p>
+  </div>
+
+</div>
