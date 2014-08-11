@@ -36,7 +36,7 @@
         <tr>
             <% @users.drop(m).each_with_index do |user, m| break if m == 7 %>
               <td>
-                <%=  image_tag(user.avatar.url(:thumb), id: user.id) %> 
+                <%=  image_tag(user.avatar.url(:thumb), id: user.id, class: "table_image") %> 
               </td>
             <% end %>
             <% m += 7 %> 
