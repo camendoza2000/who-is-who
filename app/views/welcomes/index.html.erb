@@ -11,6 +11,7 @@
   <br>
 
 <div id="show" >
+
   <div id="panel">
     <p id="fancy">Who's Who</p>
     <form>
@@ -27,28 +28,23 @@
     </ul>
   </div>
 
+    <div id="photo-show">
 
-  <div id="photo-show">
+      <table id="centre-table">
+        <% m = 0 %>
+        <% for i in 1..row_count %>
+        <tr>
+            <% @users.drop(m).each_with_index do |user, m| break if m == 7 %>
+              <td>
+                <%=  image_tag(user.avatar.url(:thumb))%> 
+              </td>
+            <% end %>
+            <% m += 7 %> 
+        </tr>
+        <% end %>   
+      </table>
 
-    <table>
-      <% m = 0 %>
-      <% for i in 1..row_count %>
-      <tr>
-          <% @users.drop(m).each_with_index do |user, m| break if m == 4 %>
-            <td>
-              <%= link_to image_tag(user.avatar.url(:thumb)), user  %>
-            </td>
-          <% end %>
-          <% m += 4 %>
-
-      </tr>
-      <% end %>   
-    </table>
-
-  </div>
-
+    </div>
 </div>
-
-
 
 </body>
