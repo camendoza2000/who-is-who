@@ -1,7 +1,9 @@
 
 
 $(document).ready(function(){
-  $("banner").click(function(){
-    $(this).console.log("mira");
+  $("img").click(function(){
+    var user_id = this.id
+    $("#photo-show").load("/users/"+ user_id);
   });
-});
+}); 
+    
