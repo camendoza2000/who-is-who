@@ -1,12 +1,17 @@
 
 
 <div id="profile-show">
-  <%= image_tag @user.avatar.url(:medium)%>
+  <div id="profile-avatar">
+    <%= image_tag @user.avatar.url(:medium)%>
+  </div>
 
   <div id="profile-panel">
     <strong> Nombre: </strong>
     <p>  <%= @user.name %> </p>
   </div><br>
 
-  <%= link_to "Back", welcomes_path %> 
+  <div id="back-button">
+    <%= button_to "Back", welcomes_path, method: "get" %> 
+  </div>
+
 </div>

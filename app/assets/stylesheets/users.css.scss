@@ -2,18 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#profile-show{
-  background-color: white;
-  position: relative;
-  width: 750px;
-  height: 70%;
+#profile-avatar{
+  float: left;
+  margin: 5px;
 }
+
 
 #profile-panel{
   background-color: #F2F2F2;
+  margin-top: 5px;
+  margin-right: 6px;
   border: 3px solid gray;
   float: right;
-  height: 90%;
+  height: 500px;
   position: relative;
-  width: 31%;
+  width: 29%;
+  overflow: auto;
+}
+
+#back-button{
+  position: absolute;
+  bottom: 0;
+  clear: both;
+}
+
+*{
+  border: 1px dotted black;
 }
