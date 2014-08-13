@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
                                     :content_type => /\Aimage\/.*\Z/
 
   validates_attachment_presence :avatar
+
+  has_many :interests
 end
