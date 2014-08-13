@@ -74,12 +74,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "no image attached" do
-    creation("no image", "app/assets/test.txt")
+    creation("no image", "public/system/test.txt")
     assert page.assert_selector("div.field_with_errors")
   end
 
   test "corrupted image" do
-    creation("false image", "app/assets/false_image.png")
+    creation("false image", "public/system/false_image.png")
     assert page.assert_selector("div.field_with_errors")
   end
 
