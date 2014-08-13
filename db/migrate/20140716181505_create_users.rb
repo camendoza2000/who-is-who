@@ -5,5 +5,9 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    change_table :users do |t|
+    	t.text :responsibilities
+    end
   end
 end
