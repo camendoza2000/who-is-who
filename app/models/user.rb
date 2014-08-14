@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_many :interests
   validates :name, presence: true
   validates :responsibilities, presence: true
+  validates :emails, presence: true
 
   has_attached_file :avatar, 
                     :styles => { :medium => "500x500>", :thumb => "125x125>" },

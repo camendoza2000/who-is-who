@@ -11,10 +11,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     attach_file "user_avatar", File.expand_path(file_route)
   end
 
-  def creation(name = "user", file_route = "app/assets/images/missing.png", responsibility = "Be a great code writer")
+  def creation(name = "user", file_route = "app/assets/images/missing.png", 
+                responsibility = "Be a great code writer",
+                email = "mail@coso.com")
     ensure_on("/users/new")
     set_name_avatar(name, file_route)
     fill_in :user_responsibilities, :with => responsibility
+    fill_in :user_emails, :with => email
     click_button "Create User"
   end
 
@@ -54,6 +57,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     first(:link, "Edit").click
     set_name_avatar("name")
     fill_in :user_responsibilities, :with => "responsibility"
+    fill_in :user_emails, :with => "email@coso.com"
     click_button "Update User"
     first(:link, "Show").click
     assert page.has_text?("name")
@@ -102,6 +106,29 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "empty responsibilities" do
     ensure_on("/users/new")
     set_name_avatar()
+    click_button("Create User")
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "create email" do
+    creation()
+    assert page.has_content?("mail@coso.com")
+  end
+
+  test "change email" do
+    creation("change email")
+    ensure_on("/users/")
+    find("tr", :text => "change email").click_link("Edit")
+    fill_in :user_emails, :with => "punch@giraffes.net"
+    click_button "Update User"
+    find("tr", :text => "change email").click_link("Show")
+    assert page.has_text?("punch@giraffes.net")
+  end
+
+  test "empty email" do
+    ensure_on("/users/new")
+    set_name_avatar()
+    fill_in :user_responsibilities, :with => "responsibility"
     click_button("Create User")
     assert page.assert_selector("div.field_with_errors")
   end
