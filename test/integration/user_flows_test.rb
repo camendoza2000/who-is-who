@@ -133,6 +133,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.assert_selector("div.field_with_errors")
   end
 
+  test "real email" do
+   creation("no real mail", File.expand_path("app/assets/images/slenderman.jpg"), 
+            "responsibility", "no_mail")
+   assert page.assert_selector("div.field_with_errors")
+  end
+
 end 
 
 
