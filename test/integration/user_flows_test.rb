@@ -11,9 +11,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     attach_file "user_avatar", File.expand_path(file_route)
   end
 
-  def creation(name = "user", file_route = "app/assets/images/missing.png")
+  def creation(name = "user", file_route = "app/assets/images/missing.png", responsibility = "Be a great code writer")
     ensure_on("/users/new")
     set_name_avatar(name, file_route)
+    fill_in :user_responsibilities, :with => responsibility
     click_button "Create User"
   end
 
@@ -34,7 +35,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit avatar" do
     creation("avatar")
-    click_link "Edit"
+    ensure_on("/users")
+    find("tr", :text => "avatar").click_link("Edit")
     attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
     click_button "Update User"
     find("tr", :text => "avatar").click_link("Show")
@@ -44,8 +46,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "show user" do
     creation("showing user")
-    click_link "Back"
-    find("tr", :text => "showing user").click_link("Show")
     assert page.has_text?("showing user") 
   end
 
@@ -53,6 +53,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     ensure_on("/users/")
     first(:link, "Edit").click
     set_name_avatar("name")
+    fill_in :user_responsibilities, :with => "responsibility"
     click_button "Update User"
     first(:link, "Show").click
     assert page.has_text?("name")
@@ -80,6 +81,28 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "corrupted image" do
     creation("false image", "public/system/false_image.png")
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "create responsibilities" do
+    creation()
+    assert page.has_content?("Be a great code writer")
+  end
+
+  test "change responsibilities" do
+    creation("change responsibilities")
+    ensure_on("/users/")
+    find("tr", :text => "change responsibilities").click_link("Edit")
+    fill_in :user_responsibilities, :with => "punch giraffes"
+    click_button "Update User"
+    find("tr", :text => "change responsibilities").click_link("Show")
+    assert page.has_text?("punch giraffes")
+  end
+
+  test "empty responsibilities" do
+    ensure_on("/users/new")
+    set_name_avatar()
+    click_button("Create User")
     assert page.assert_selector("div.field_with_errors")
   end
 
