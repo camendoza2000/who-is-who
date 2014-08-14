@@ -7,6 +7,8 @@ class WelcomesController < ApplicationController
     @users = User.all
   end
 
+
+=begin
   # GET /welcomes/1
   # GET /welcomes/1.json
   def show
@@ -73,4 +75,5 @@ class WelcomesController < ApplicationController
     def welcome_params
       params[:welcome]
     end
+=end
 end
