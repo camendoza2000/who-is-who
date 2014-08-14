@@ -34,7 +34,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit avatar" do
     creation("avatar")
-    click_link "Edit"
+    ensure_on("/users")
+    find("tr", :text => "avatar").click_link("Edit")
     attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
     click_button "Update User"
     find("tr", :text => "avatar").click_link("Show")
@@ -44,8 +45,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "show user" do
     creation("showing user")
-    click_link "Back"
-    find("tr", :text => "showing user").click_link("Show")
     assert page.has_text?("showing user") 
   end
 
@@ -81,6 +80,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "corrupted image" do
     creation("false image", "public/system/false_image.png")
     assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "create responsibilities" do
+        
   end
 
 end 
