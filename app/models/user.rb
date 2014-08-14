@@ -15,5 +15,4 @@ class User < ActiveRecord::Base
 
   validates_attachment_presence :avatar 
 
-  has_many :interests
 end
