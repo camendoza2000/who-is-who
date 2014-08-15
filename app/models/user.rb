@@ -1,9 +1,13 @@
 class User < ActiveRecord::Base
   validates :name, presence: true
-  validates :responsibilities, presence: true
   validates :emails, presence: true,
                      format: { with: /\A[^@]+@[^@]+\z/,
                                message: "Please ingrese a valid email"}
+  validates :birthplace, presence: true
+  #validates :birthdate, presence: true
+  validates :institution, presence: true
+  validates :career, presence: true
+  validates :responsibilities, presence: true
  
   has_attached_file :avatar, 
                     :styles => { :medium => "500x500>", :thumb => "125x125>" },

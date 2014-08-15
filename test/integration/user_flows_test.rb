@@ -6,18 +6,34 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
 
-  def set_name_avatar(name = "user", file_route = "app/assets/images/missing.png")
+  def set_name_avatar(name = "Alan Mathison Turing", 
+                      file_route = "app/assets/images/missing.png")
     fill_in :user_name, :with => name
     attach_file "user_avatar", File.expand_path(file_route)
   end
 
-  def creation(name = "user", file_route = "app/assets/images/missing.png", 
-                responsibility = "Be a great code writer",
-                email = "mail@coso.com")
+  def set_date(d = "23", m = "June", y = 2000)
+    page.select d, :from => "user_birthdate_3i"
+    page.select m, :from => "user_birthdate_2i"
+    page.select y, :from => "user_birthdate_1i"
+  end
+
+  def creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png")
     ensure_on("/users/new")
     set_name_avatar(name, file_route)
-    fill_in :user_responsibilities, :with => responsibility
     fill_in :user_emails, :with => email
+    fill_in :user_birthplace, :with => birthplace
+    set_date()
+    fill_in :user_institution, :with => institution
+    fill_in :user_career, :with => career
+    fill_in :user_position, :with => position
+    fill_in :user_responsibilities, :with => responsibility
     click_button "Create User"
   end
 

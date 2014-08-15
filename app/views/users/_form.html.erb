@@ -16,7 +16,8 @@
 
     <p>
       <%= f.label :birthdate %> <br>
-      <%= f.date_select :birthdate %>
+      <%= f.date_select :birthdate, :start_year => Date.current.year, :end_year => 1920,
+                                    :order => [:day, :month, :year] %>
     </p>
 
     <p>
