@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815174955) do
+ActiveRecord::Schema.define(version: 20140815201217) do
 
   create_table "interests", force: true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "interests", ["user_id"], name: "index_interests_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -28,12 +31,12 @@ ActiveRecord::Schema.define(version: 20140815174955) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "responsibilities"
-    t.string   "email"
     t.string   "emails"
     t.string   "birthplace"
     t.date     "birthdate"
     t.string   "institution"
     t.string   "career"
+    t.string   "position"
   end
 
   create_table "welcomes", force: true do |t|

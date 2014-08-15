@@ -6,6 +6,10 @@ class InterestsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def index
+    
+  end
+
   def destroy
     @user = User.find(params[:user_id])
     @interests = @user.interests.find(params[:id])
