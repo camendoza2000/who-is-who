@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :interests
   validates :name, presence: true
   validates :responsibilities, presence: true
   validates :emails, presence: true,
@@ -15,4 +14,5 @@ class User < ActiveRecord::Base
 
   validates_attachment_presence :avatar 
 
+  has_many :interests
 end

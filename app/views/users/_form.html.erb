@@ -15,10 +15,15 @@
     </p>
 
     <p>
+      <%= f.label :birthdate %> <br>
+      <%= f.date_select :birthdate %>
+    </p>
+
+    <p>
       <%= f.label :interest %> <br>
       <%= f.text_field :interests %>
     </p>
-  
+
   <p>
     <%= f.label :responsibilities %> <br>
     <%= f.text_area :responsibilities %>
