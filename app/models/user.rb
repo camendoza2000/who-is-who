@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
                                message: "Please ingrese a valid email"}
   validates :birthplace, presence: true
 
-  #validate :birthday_not_set, on: :create
+  validates :birthdate, presence: true
 
   validates :institution, presence: true
   validates :career, presence: true
