@@ -10,12 +10,6 @@ class InterestsController < ApplicationController
     
   end
 
-  def destroy
-    @user = User.find(params[:user_id])
-    @interests = @user.interests.find(params[:id])
-    redirect_to user_path(@user)
-  end
-
 
   private
   def interest_params
