@@ -6,9 +6,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
 
-  def set_name_avatar(name = "Alan Mathison Turing", 
-                      file_route = "app/assets/images/missing.png")
-    fill_in :user_name, :with => name
+  def set_avatar(file_route = "app/assets/images/missing.png")
     attach_file "user_avatar", File.expand_path(file_route)
   end
 
@@ -24,16 +22,18 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                career = "Mathematics", 
                position = "QA", 
                responsibility = "Be a great code writer", 
-               file_route = "app/assets/images/missing.png")
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 2000)
     ensure_on("/users/new")
-    set_name_avatar()
-    fill_in :user_emails, :with => email
-    fill_in :user_birthplace, :with => birthplace
-    set_date()
-    fill_in :user_institution, :with => institution
-    fill_in :user_career, :with => career
-    fill_in :user_position, :with => position
-    fill_in :user_responsibilities, :with => responsibility
+    set(:user_name, name)
+    set(:user_emails, email)
+    set(:user_birthplace, birthplace)
+    set_date(d,m,y)
+    set(:user_institution, institution)
+    set(:user_career, career)
+    set(:user_position, position)
+    set(:user_responsibilities, responsibility)
+    set_avatar(file_route)
     click_button "Create User"
   end
 
@@ -45,11 +45,14 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     fill_in x, :with => y
   end
 
-  test "user name" do
-    ensure_on("/users/new")
-    set("name", "algo")
-    click_button "Create User"
-    assert page.has_content?("algo") 
+  def edition(initial_name, to_change, new_param)
+    creation(initial_name)
+    ensure_on("/users")
+    find("tr", :text => initial_name).click_link("Edit")
+    set(to_change, new_param)
+    click_button "Update User"
+    find("tr", :text => initial_name).click_link("Show")
+    assert page.has_text? new_param
   end
 
   test "user has name" do
@@ -80,13 +83,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "edit user name" do
+    creation("name to change")
     ensure_on("/users/")
-    first(:link, "Edit").click
-    set_name_avatar("name")
-    fill_in :user_responsibilities, :with => "responsibility"
-    fill_in :user_emails, :with => "email@coso.com"
+    find("tr", :text => "name to change").click_link("Edit")
+    set(:user_name, "new name")
     click_button "Update User"
-    first(:link, "Show").click
+    find("tr", :text => "new name").click_link("Show")
     assert page.has_text?("name")
   end
 
@@ -115,48 +117,26 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.assert_selector("div.field_with_errors")
   end
 
-  test "create responsibilities" do
-    creation()
-    assert page.has_content?("Be a great code writer")
-  end
-
-  test "change responsibilities" do
-    creation("change responsibilities")
-    ensure_on("/users/")
-    find("tr", :text => "change responsibilities").click_link("Edit")
-    fill_in :user_responsibilities, :with => "punch giraffes"
-    click_button "Update User"
-    find("tr", :text => "change responsibilities").click_link("Show")
-    assert page.has_text?("punch giraffes")
-  end
-
-  test "empty responsibilities" do
-    ensure_on("/users/new")
-    set_name_avatar()
-    click_button("Create User")
-    assert page.assert_selector("div.field_with_errors")
-  end
-
+ 
   test "create email" do
     creation()
     assert page.has_content?("mail@coso.com")
   end
 
   test "change email" do
-    creation("change email")
-    ensure_on("/users/")
-    find("tr", :text => "change email").click_link("Edit")
-    fill_in :user_emails, :with => "punch@giraffes.net"
-    click_button "Update User"
-    find("tr", :text => "change email").click_link("Show")
+    edition("change email", :user_emails, "punch@giraffes.net")
     assert page.has_text?("punch@giraffes.net")
   end
 
   test "empty email" do
-    ensure_on("/users/new")
-    set_name_avatar()
-    fill_in :user_responsibilities, :with => "responsibility"
-    click_button("Create User")
+    creation(name = "Alan Mathison Turing", email = nil, 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 2000)
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -171,6 +151,105 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
    assert page.assert_selector("div.field_with_errors")
   end
 
+  test "has birthplace" do
+    creation()
+    assert page.has_text?(" Maida Vale, London, United Kingdom")
+  end
+
+  test "change birthplace" do
+    edition("new birthplace", :user_birthplace, "Comala, Colima, México.")
+  end
+
+  test "empty birthplace" do
+    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = nil, 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 2000)
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "has birthdate" do
+    creation()
+    assert page.has_text?("2000-06-23")
+  end
+
+  test "change birthdate" do
+    creation("new birthdate")
+    ensure_on("/users")
+    find("tr", :text => "new birthdate").click_link("Edit")
+    set_date(d=1, m="May", y=1920)
+    click_button "Update User"
+    find("tr", :text => "new birthdate").click_link("Show")
+    assert page.has_text? "1920-05-01"
+  end
+
+  
+  test "has institution" do
+    creation()
+    assert page.has_text?("University of Manchester")
+  end
+
+  test "change institution" do
+    edition("new institution", :user_institution, "UMSNH.")
+  end
+
+  test "empty institution" do
+    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = nil, 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 2000)
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "has career" do
+    creation()
+    assert page.has_text?("Mathematics")
+  end
+
+  test "change career" do
+    edition("new career", :user_career, "Ing. en Sistemas.")
+  end
+
+  test "empty career" do
+    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = nil, 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 2000)
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+   test "create responsibilities" do
+    creation()
+    assert page.has_content?("Be a great code writer")
+  end
+
+  test "change responsibilities" do
+    edition("new responsibilities", :user_responsibilities, "punch giraffes")
+  end
+
+  test "empty responsibilities" do
+    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = nil, 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 2000)
+    assert page.assert_selector("div.field_with_errors")
+  end
 
 
 end 
