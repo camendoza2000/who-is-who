@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
                      format: { with: /\A[^@]+@[^@]+\z/,
                                message: "Please ingrese a valid email"}
   validates :birthplace, presence: true
-  #validates :birthdate, presence: true
+  validates :birthdate, presence: true
   validates :institution, presence: true
   validates :career, presence: true
   validates :responsibilities, presence: true

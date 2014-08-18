@@ -26,7 +26,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png")
     ensure_on("/users/new")
-    set_name_avatar(name, file_route)
+    set_name_avatar()
     fill_in :user_emails, :with => email
     fill_in :user_birthplace, :with => birthplace
     set_date()
@@ -39,6 +39,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   def ensure_on(route)
     visit route unless current_path == route
+  end
+
+  def set(x,y)
+    fill_in x, :with => y
+  end
+
+  test "user name" do
+    ensure_on("/users/new")
+    set("name", "algo")
+    click_button "Create User"
+    assert page.has_content?("algo") 
   end
 
   test "user has name" do
@@ -150,10 +161,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "real email" do
-   creation("no real mail", File.expand_path("app/assets/images/slenderman.jpg"), 
-            "responsibility", "no_mail")
+   creation(name = "Alan Mathison Turing", email = "no_email", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png")
    assert page.assert_selector("div.field_with_errors")
   end
+
+
 
 end 
 
