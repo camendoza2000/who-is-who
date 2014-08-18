@@ -197,9 +197,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     set(:user_position, "position")
     set(:user_responsibilities, "responsibility")
     set_avatar()
-    sleep(1)
     click_button "Create User"
-    sleep(1)
+    assert page.assert_selector("div.field_with_errors")
   end
   
   test "has institution" do

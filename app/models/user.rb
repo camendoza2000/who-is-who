@@ -22,11 +22,4 @@ class User < ActiveRecord::Base
 
   has_many :interests
 
-  #def birthday_not_set
-  #  if   == Date.current.year.to_s
-  #    errors.add()
-  #    
-  #  end
-  #end
-
 end
