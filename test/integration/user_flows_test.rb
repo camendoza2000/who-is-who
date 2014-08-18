@@ -10,7 +10,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     attach_file "user_avatar", File.expand_path(file_route)
   end
 
-  def set_date(d = "23", m = "June", y = 2000)
+  def set_date(d = "23", m = "June", y = 1912)
     page.select d, :from => "user_birthdate_3i"
     page.select m, :from => "user_birthdate_2i"
     page.select y, :from => "user_birthdate_1i"
@@ -23,7 +23,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 2000)
+               d = "23", m = "June", y = 1912)
     ensure_on("/users/new")
     set(:user_name, name)
     set(:user_emails, email)
@@ -125,7 +125,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "change email" do
     edition("change email", :user_emails, "punch@giraffes.net")
-    assert page.has_text?("punch@giraffes.net")
   end
 
   test "empty email" do
@@ -136,7 +135,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 2000)
+               d = "23", m = "June", y = 1912)
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -168,13 +167,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 2000)
+               d = "23", m = "June", y = 1912)
     assert page.assert_selector("div.field_with_errors")
   end
 
   test "has birthdate" do
     creation()
-    assert page.has_text?("2000-06-23")
+    assert page.has_text?("1912-06-23")
   end
 
   test "change birthdate" do
@@ -187,6 +186,21 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_text? "1920-05-01"
   end
 
+  test "no actual date" do
+    ensure_on("/users/new")
+    set(:user_name, "name")
+    set(:user_emails, "email@email")
+    set(:user_birthplace, "birthplace")
+    #set_date(d,m,y)
+    set(:user_institution, "institution")
+    set(:user_career, "career")
+    set(:user_position, "position")
+    set(:user_responsibilities, "responsibility")
+    set_avatar()
+    sleep(1)
+    click_button "Create User"
+    sleep(1)
+  end
   
   test "has institution" do
     creation()
@@ -205,7 +219,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 2000)
+               d = "23", m = "June", y = 1912)
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -226,7 +240,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 2000)
+               d = "23", m = "June", y = 1912)
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -247,7 +261,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = nil, 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 2000)
+               d = "23", m = "June", y = 1912)
     assert page.assert_selector("div.field_with_errors")
   end
 

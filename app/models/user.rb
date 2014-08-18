@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
                      format: { with: /\A[^@]+@[^@]+\z/,
                                message: "Please ingrese a valid email"}
   validates :birthplace, presence: true
-  validates :birthdate, presence: true
+
+  #validate :birthday_not_set, on: :create
+
   validates :institution, presence: true
   validates :career, presence: true
   validates :responsibilities, presence: true
@@ -19,4 +21,12 @@ class User < ActiveRecord::Base
   validates_attachment_presence :avatar 
 
   has_many :interests
+
+  #def birthday_not_set
+  #  if   == Date.current.year.to_s
+  #    errors.add()
+  #    
+  #  end
+  #end
+
 end
