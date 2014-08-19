@@ -10,7 +10,7 @@ class UserTest < ActiveSupport::TestCase
    test "save user" do 
     user = User.new
     user.name = "cosa"
-    assert user.save, "User not saved"
+    assert_not user.save, "User not saved"
    end
 
    test "delete user" do 

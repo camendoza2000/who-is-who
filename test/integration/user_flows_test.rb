@@ -263,22 +263,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.assert_selector("div.field_with_errors")
   end
 
- test "create interests" do 
-  ensure_on("/users/new")
-  set(:user_name, "name")
-  set(:user_emails, "email@email")
-  set(:user_birthplace, "birthplace")
-  set_date()
-  set(:user_institution, "institution")
-  set(:user_career, "career")
-  set(:user_position, "position")
-  set(:user_responsibilities, "responsibility")
-  set_avatar()
-  set(:user_interests, "ALGO")
-  click_button "Create User"
-  assert page.has_content?("ALGO")
- end
-
+ 
 end 
 
 

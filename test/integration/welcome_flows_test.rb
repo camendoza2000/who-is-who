@@ -12,7 +12,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
 
   test "display name" do
     display_perfil()
-    assert page.has_content?("User1") 
+    assert page.has_content?("User2") 
   end
 
 
