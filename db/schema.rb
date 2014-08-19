@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140815201217) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "responsibilities"
-    t.string   "emails"
+    t.string   "email"
     t.string   "birthplace"
     t.date     "birthdate"
     t.string   "institution"

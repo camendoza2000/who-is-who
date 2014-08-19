@@ -2,7 +2,7 @@
 
 one:
   name: Howard Phillips Lovecraft
-  emails: mail_2@coso.com
+  email: mail_2@coso.com
   birthplace: Providence
   birthdate: 1937-03-15
   institution: UMSNH
@@ -12,7 +12,7 @@ one:
 
 two:
   name: Stephen Edwin King
-  emails: SK@mail.com	
+  email: SK@mail.com	
   birthplace: Portland
   birthdate: 1947-09-21
   institution: University of Maine 

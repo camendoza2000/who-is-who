@@ -26,7 +26,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                d = "23", m = "June", y = 1912)
     ensure_on_page("/users/new")
     set(:user_name, name)
-    set(:user_emails, email)
+    set(:user_email, email)
     set(:user_birthplace, birthplace)
     set_date(d,m,y)
     set(:user_institution, institution)
@@ -55,38 +55,38 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_text? new_param
   end
 
+  def firs_user_click_on(x)
+    ensure_on_page("/users/")
+    first(:link, x).click
+  end
+
   test "user has name" do
-    create_user("user with name")
-    assert page.has_content?("user with name") 
+    ensure_on_page("/users/")
+    name = page.find("tr")["td"]
+    firs_user_click_on("Show")
+    assert page.has_content? name 
   end
 
   test "user has avatar" do
-    create_user("user with avatar")
+    firs_user_click_on("Show")
     image = page.find("img")["src"]
     assert image.include? "missing.png"
   end
 
   test "edit avatar" do
-    create_user("avatar")
-    ensure_on_page("/users")
-    find("tr", :text => "avatar").click_link("Edit")
+    ensure_on_page("/users/")
+    firs_user_click_on("Edit")
     attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
     click_button "Update User"
-    find("tr", :text => "avatar").click_link("Show")
+    firs_user_click_on("Show")
     image = page.find("img")["src"]
-    assert_not image.include? "missing.png"
-  end
-
-  test "show user" do
-    create_user("showing user")
-    assert page.has_text?("showing user") 
+    assert image.include? "slenderman.jpg"
   end
 
   test "edit user name" do
-    create_user("name to change")
-    ensure_on_page("/users/")
-    find("tr", :text => "name to change").click_link("Edit")
+    firs_user_click_on("Edit")
     set(:user_name, "new name")
+    set_avatar()
     click_button "Update User"
     find("tr", :text => "new name").click_link("Show")
     assert page.has_text?("name")
@@ -94,16 +94,20 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
 
   test "delete user" do
-    ensure_on_page("/users/")
-    first(:link, "Delete").click
+    firs_user_click_on("Delete")
     accept_alert()
     assert_not page.has_content?("User1")
    end
 
   test "user without avatar" do
-    ensure_on_page("/users/new")
-    fill_in :user_name, :with => "no avatar"
-    click_button "Create User"
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = nil, 
+               d = "23", m = "June", y = 1912)
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -124,7 +128,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "change email" do
-    edit_user("change email", :user_emails, "punch@giraffes.net")
+    edit_user("change email", :user_email, "punch@giraffes.net")
   end
 
   test "empty email" do
@@ -189,7 +193,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "no actual date" do
     ensure_on_page("/users/new")
     set(:user_name, "name")
-    set(:user_emails, "email@email")
+    set(:user_email, "email@email")
     set(:user_birthplace, "birthplace")
     set(:user_institution, "institution")
     set(:user_career, "career")
