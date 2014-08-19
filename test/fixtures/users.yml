@@ -1,10 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: User2
+  name: Howard Phillips Lovecraft
+  emails: mail_2@coso.com
+  birthplace: Providence
+  birthdate: 1937-03-15
+  institution: UMSNH
+  career: Ing. en sistemas
+  position: HR
+  responsibilities: Call to Cthulhu
 
 two:
-  name: User1
+  name: Stephen Edwin King
+  emails: SK@mail.com	
+  birthplace: Portland
+  birthdate: 1947-09-21
+  institution: University of Maine 
+  career: Writer
+  position: QA
+  responsibilities: Writte scary code
 
 
 

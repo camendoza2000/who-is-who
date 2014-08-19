@@ -16,7 +16,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     page.select y, :from => "user_birthdate_1i"
   end
 
-  def creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+  def create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = "University of Manchester", 
                career = "Mathematics", 
@@ -24,7 +24,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
                d = "23", m = "June", y = 1912)
-    ensure_on("/users/new")
+    ensure_on_page("/users/new")
     set(:user_name, name)
     set(:user_emails, email)
     set(:user_birthplace, birthplace)
@@ -37,7 +37,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     click_button "Create User"
   end
 
-  def ensure_on(route)
+  def ensure_on_page(route)
     visit route unless current_path == route
   end
 
@@ -45,9 +45,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     fill_in x, :with => y
   end
 
-  def edition(initial_name, to_change, new_param)
-    creation(initial_name)
-    ensure_on("/users")
+  def edit_user(initial_name, to_change, new_param)
+    create_user(initial_name)
+    ensure_on_page("/users")
     find("tr", :text => initial_name).click_link("Edit")
     set(to_change, new_param)
     click_button "Update User"
@@ -56,19 +56,19 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "user has name" do
-    creation("user with name")
+    create_user("user with name")
     assert page.has_content?("user with name") 
   end
 
   test "user has avatar" do
-    creation("user with avatar")
+    create_user("user with avatar")
     image = page.find("img")["src"]
     assert image.include? "missing.png"
   end
 
   test "edit avatar" do
-    creation("avatar")
-    ensure_on("/users")
+    create_user("avatar")
+    ensure_on_page("/users")
     find("tr", :text => "avatar").click_link("Edit")
     attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
     click_button "Update User"
@@ -78,13 +78,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "show user" do
-    creation("showing user")
+    create_user("showing user")
     assert page.has_text?("showing user") 
   end
 
   test "edit user name" do
-    creation("name to change")
-    ensure_on("/users/")
+    create_user("name to change")
+    ensure_on_page("/users/")
     find("tr", :text => "name to change").click_link("Edit")
     set(:user_name, "new name")
     click_button "Update User"
@@ -94,41 +94,41 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
 
   test "delete user" do
-    ensure_on("/users/")
+    ensure_on_page("/users/")
     first(:link, "Delete").click
     accept_alert()
     assert_not page.has_content?("User1")
    end
 
   test "user without avatar" do
-    ensure_on("/users/new")
+    ensure_on_page("/users/new")
     fill_in :user_name, :with => "no avatar"
     click_button "Create User"
     assert page.assert_selector("div.field_with_errors")
   end
 
   test "no image attached" do
-    creation("no image", "public/system/test.txt")
+    create_user("no image", "public/system/test.txt")
     assert page.assert_selector("div.field_with_errors")
   end
 
   test "corrupted image" do
-    creation("false image", "public/system/false_image.png")
+    create_user("false image", "public/system/false_image.png")
     assert page.assert_selector("div.field_with_errors")
   end
 
  
   test "create email" do
-    creation()
+    create_user()
     assert page.has_content?("mail@coso.com")
   end
 
   test "change email" do
-    edition("change email", :user_emails, "punch@giraffes.net")
+    edit_user("change email", :user_emails, "punch@giraffes.net")
   end
 
   test "empty email" do
-    creation(name = "Alan Mathison Turing", email = nil, 
+    create_user(name = "Alan Mathison Turing", email = nil, 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = "University of Manchester", 
                career = "Mathematics", 
@@ -140,7 +140,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "real email" do
-   creation(name = "Alan Mathison Turing", email = "no_email", 
+   create_user(name = "Alan Mathison Turing", email = "no_email", 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = "University of Manchester", 
                career = "Mathematics", 
@@ -151,16 +151,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "has birthplace" do
-    creation()
+    create_user()
     assert page.has_text?(" Maida Vale, London, United Kingdom")
   end
 
   test "change birthplace" do
-    edition("new birthplace", :user_birthplace, "Comala, Colima, México.")
+    edit_user("new birthplace", :user_birthplace, "Comala, Colima, México.")
   end
 
   test "empty birthplace" do
-    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
                birthplace = nil, 
                institution = "University of Manchester", 
                career = "Mathematics", 
@@ -172,13 +172,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "has birthdate" do
-    creation()
+    create_user()
     assert page.has_text?("1912-06-23")
   end
 
   test "change birthdate" do
-    creation("new birthdate")
-    ensure_on("/users")
+    create_user("new birthdate")
+    ensure_on_page("/users")
     find("tr", :text => "new birthdate").click_link("Edit")
     set_date(d=1, m="May", y=1920)
     click_button "Update User"
@@ -187,7 +187,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "no actual date" do
-    ensure_on("/users/new")
+    ensure_on_page("/users/new")
     set(:user_name, "name")
     set(:user_emails, "email@email")
     set(:user_birthplace, "birthplace")
@@ -201,16 +201,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
   
   test "has institution" do
-    creation()
+    create_user()
     assert page.has_text?("University of Manchester")
   end
 
   test "change institution" do
-    edition("new institution", :user_institution, "UMSNH.")
+    edit_user("new institution", :user_institution, "UMSNH.")
   end
 
   test "empty institution" do
-    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = nil, 
                career = "Mathematics", 
@@ -222,16 +222,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "has career" do
-    creation()
+    create_user()
     assert page.has_text?("Mathematics")
   end
 
   test "change career" do
-    edition("new career", :user_career, "Ing. en Sistemas.")
+    edit_user("new career", :user_career, "Ing. en Sistemas.")
   end
 
   test "empty career" do
-    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = "University of Manchester", 
                career = nil, 
@@ -243,16 +243,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
    test "create responsibilities" do
-    creation()
+    create_user()
     assert page.has_content?("Be a great code writer")
   end
 
   test "change responsibilities" do
-    edition("new responsibilities", :user_responsibilities, "punch giraffes")
+    edit_user("new responsibilities", :user_responsibilities, "punch giraffes")
   end
 
   test "empty responsibilities" do
-    creation(name = "Alan Mathison Turing", email = "mail@coso.com", 
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = "University of Manchester", 
                career = "Mathematics", 
