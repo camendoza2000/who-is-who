@@ -7,6 +7,29 @@
   <div id="profile-panel">
     <strong> Nombre: </strong>
     <p>  <%= @user.name %> </p>
+
+    <strong> Email: </strong>
+    <p> <%= @user.emails %> </p>
+
+    <strong> Lugar de nacimiento: </strong>
+    <p> <%= @user.birthplace %> </p>
+
+    <strong> Fecha de nacimiento: </strong>
+    <p> <%= @user.birthdate %> </p>
+
+    <strong> Education: </strong>
+    <h5>Institution:</h5>
+    <p> <%= @user.institution %> </p>
+    <h5> Career: </h5>
+    <p> <%= @user.career %> </p>
+
+    <strong> Position: </strong>
+    <p> <%= @user.position %> </p>
+
+
+    <strong> Intereses: </strong>
+    <p> <%= render @user.interests %> </p>
+
     <strong> Responsabilidades: </strong>
     <p> <%= @user.responsibilities %> </p>
   </div><br>

@@ -1,4 +1,5 @@
-<%= form_for @interest do |f| %>
+<%= form_for([@user, @user.interests.build]) do |f| %>
+
   <p>
    <%= f.label :interest %><br>
     <%= f.text_field :name %>
