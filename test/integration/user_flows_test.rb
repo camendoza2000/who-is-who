@@ -8,6 +8,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   def set_avatar(file_route = "app/assets/images/missing.png")
     attach_file "user_avatar", File.expand_path(file_route)
+    #attach_file(:user_avatar, File.expand_path(file_route))
   end
 
   def set_date(d = "23", m = "June", y = 1912)
@@ -46,7 +47,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   def edit_user(initial_name = "Howard Phillips Lovecraft", to_change, new_param)
-    user_click_on(name = initial_name, "Edit")
+    user_click_on(user_name = initial_name, "Edit")
     set(to_change, new_param)
     set_avatar()
     click_button "Update User"
@@ -54,9 +55,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_text? new_param
   end
 
-  def user_click_on(name = "Stephen Edwin King", x)
+  def user_click_on(user_name = "Stephen Edwin King", x)
     ensure_on_page("/users/")
-    find("tr", :text => name).click_link(x)
+    find("tr", :text => user_name).click_link(x)
   end
 
   test "user has name" do
@@ -71,16 +72,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "edit avatar" do
-    user_click_on(name= "Howard Phillips Lovecraft", "Edit")
-    attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
+    create_user()
+    user_click_on("Alan Mathison Turing", "Edit")
+    set_avatar(file_route = "app/assets/images/slenderman.jpg")
     click_button "Update User"
-    user_click_on("Show")
+    user_click_on("Alan Mathison Turing", "Show")
     image = page.find("img")["src"]
     assert image.include? "slenderman.jpg"
   end
 
   test "edit user name" do
-    user_click_on(name= "Juan Rulfo", "Edit")
+    user_click_on(user_name= "Juan Rulfo", "Edit")
     set(:user_name, "new name")
     set_avatar()
     click_button "Update User"
@@ -90,20 +92,23 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
 
   test "delete user" do
-    user_click_on(name = "Thomas Harris", "Delete")
+    user_click_on(user_name = "Thomas Harris", "Delete")
     accept_alert()
     assert_not page.has_content?("Thomas Harris")
    end
 
   test "user without avatar" do
-    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
-               birthplace = " Maida Vale, London, United Kingdom", 
-               institution = "University of Manchester", 
-               career = "Mathematics", 
-               position = "QA", 
-               responsibility = "Be a great code writer", 
-               file_route = nil, 
-               d = "23", m = "June", y = 1912)
+    ensure_on_page("/users/new")
+    set(:user_name, "name")
+    set(:user_email, "email@email")
+    set(:user_birthplace, "birthplace")
+    set_date(d = "23", m = "June", y = 1912)
+    set(:user_institution, "institution")
+    set(:user_career, "career")
+    set(:user_position, "position")
+    set(:user_responsibilities, "responsibility")
+    attach_file "user_avatar", nil
+    click_button "Create User"
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -191,11 +196,11 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "change birthdate" do
-    user_click_on(name = "Howard Phillips Lovecraft", "Edit")
+    user_click_on(user_name = "Howard Phillips Lovecraft", "Edit")
     set_date(d=1, m="May", y=1920)
     set_avatar()
     click_button "Update User"
-    user_click_on(name = "Howard Phillips Lovecraft", "Show")
+    user_click_on(user_name = "Howard Phillips Lovecraft", "Show")
     assert page.has_text? "1920-05-01"
   end
 
@@ -278,5 +283,4 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
  
 end 
-
 
