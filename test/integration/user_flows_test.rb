@@ -7,7 +7,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
 
   def set_avatar(file_route = "app/assets/images/missing.png")
-    puts File.expand_path(file_route)
     attach_file "user_avatar", File.expand_path(file_route)
   end
 
@@ -126,7 +125,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                career = "Mathematics", 
                position = "QA", 
                responsibility = "Be a great code writer", 
-               file_route = "public/system/test.txt", 
+               file_route = "test/fixtures/test.txt", 
                d = "23", m = "June", y = 1912)   
     assert page.assert_selector("div.field_with_errors")
   end
@@ -138,7 +137,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                career = "Mathematics", 
                position = "QA", 
                responsibility = "Be a great code writer", 
-               file_route = "public/system/false_image.png", 
+               file_route = "test/fixtures/false_image.png", 
                d = "23", m = "June", y = 1912)   
     assert page.assert_selector("div.field_with_errors")
   end
