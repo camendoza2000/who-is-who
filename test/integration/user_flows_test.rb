@@ -45,46 +45,42 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     fill_in x, :with => y
   end
 
-  def edit_user(initial_name, to_change, new_param)
-    create_user(initial_name)
-    ensure_on_page("/users")
-    find("tr", :text => initial_name).click_link("Edit")
+  def edit_user(initial_name = "Howard Phillips Lovecraft", to_change, new_param)
+    user_click_on(name = initial_name, "Edit")
     set(to_change, new_param)
+    set_avatar()
     click_button "Update User"
     find("tr", :text => initial_name).click_link("Show")
     assert page.has_text? new_param
   end
 
-  def firs_user_click_on(x)
+  def user_click_on(name = "Stephen Edwin King", x)
     ensure_on_page("/users/")
-    first(:link, x).click
+    find("tr", :text => name).click_link(x)
   end
 
   test "user has name" do
-    ensure_on_page("/users/")
-    name = page.find("tr")["td"]
-    firs_user_click_on("Show")
-    assert page.has_content? name 
+    user_click_on("Show")
+    assert page.has_content?("Stephen Edwin King")
   end
 
   test "user has avatar" do
-    firs_user_click_on("Show")
+    user_click_on("Show")
     image = page.find("img")["src"]
     assert image.include? "missing.png"
   end
 
   test "edit avatar" do
-    ensure_on_page("/users/")
-    firs_user_click_on("Edit")
+    user_click_on(name= "Howard Phillips Lovecraft", "Edit")
     attach_file "user_avatar", File.expand_path("app/assets/images/slenderman.jpg")
     click_button "Update User"
-    firs_user_click_on("Show")
+    user_click_on("Show")
     image = page.find("img")["src"]
     assert image.include? "slenderman.jpg"
   end
 
   test "edit user name" do
-    firs_user_click_on("Edit")
+    user_click_on(name= "Juan Rulfo", "Edit")
     set(:user_name, "new name")
     set_avatar()
     click_button "Update User"
@@ -94,9 +90,9 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
 
   test "delete user" do
-    firs_user_click_on("Delete")
+    user_click_on(name = "Thomas Harris", "Delete")
     accept_alert()
-    assert_not page.has_content?("User1")
+    assert_not page.has_content?("Thomas Harris")
    end
 
   test "user without avatar" do
@@ -112,23 +108,37 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "no image attached" do
-    create_user("no image", "public/system/test.txt")
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "public/system/test.txt", 
+               d = "23", m = "June", y = 1912)   
     assert page.assert_selector("div.field_with_errors")
   end
 
   test "corrupted image" do
-    create_user("false image", "public/system/false_image.png")
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "public/system/false_image.png", 
+               d = "23", m = "June", y = 1912)   
     assert page.assert_selector("div.field_with_errors")
   end
 
  
-  test "create email" do
-    create_user()
-    assert page.has_content?("mail@coso.com")
+  test "user has email" do
+    user_click_on("Show")
+    assert page.has_content?("SK@mail.com")
   end
 
   test "change email" do
-    edit_user("change email", :user_email, "punch@giraffes.net")
+    edit_user(:user_email, "cthulhu@gmail.net")
   end
 
   test "empty email" do
@@ -155,12 +165,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "has birthplace" do
-    create_user()
-    assert page.has_text?(" Maida Vale, London, United Kingdom")
+    user_click_on("Show")
+    assert page.has_text?(" Portland, Maine, US")
   end
 
   test "change birthplace" do
-    edit_user("new birthplace", :user_birthplace, "Comala, Colima, México.")
+    edit_user(:user_birthplace, "Comala, Colima, México.")
   end
 
   test "empty birthplace" do
@@ -176,21 +186,20 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "has birthdate" do
-    create_user()
-    assert page.has_text?("1912-06-23")
+    user_click_on("Show")
+    assert page.has_text?("1947-09-21")
   end
 
   test "change birthdate" do
-    create_user("new birthdate")
-    ensure_on_page("/users")
-    find("tr", :text => "new birthdate").click_link("Edit")
+    user_click_on(name = "Howard Phillips Lovecraft", "Edit")
     set_date(d=1, m="May", y=1920)
+    set_avatar()
     click_button "Update User"
-    find("tr", :text => "new birthdate").click_link("Show")
+    user_click_on(name = "Howard Phillips Lovecraft", "Show")
     assert page.has_text? "1920-05-01"
   end
 
-  test "no actual date" do
+  test "no default date" do
     ensure_on_page("/users/new")
     set(:user_name, "name")
     set(:user_email, "email@email")
@@ -205,12 +214,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
   
   test "has institution" do
-    create_user()
-    assert page.has_text?("University of Manchester")
+    user_click_on("Show")
+    assert page.has_text?("University of Maine")
   end
 
   test "change institution" do
-    edit_user("new institution", :user_institution, "UMSNH.")
+    edit_user(:user_institution, "UMSNH.")
   end
 
   test "empty institution" do
@@ -226,12 +235,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "has career" do
-    create_user()
-    assert page.has_text?("Mathematics")
+    user_click_on("Show")
+    assert page.has_text?("Writer")
   end
 
   test "change career" do
-    edit_user("new career", :user_career, "Ing. en Sistemas.")
+    edit_user(:user_career, "Ing. en Sistemas.")
   end
 
   test "empty career" do
@@ -246,13 +255,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.assert_selector("div.field_with_errors")
   end
 
-   test "create responsibilities" do
-    create_user()
-    assert page.has_content?("Be a great code writer")
+   test "has responsibilities" do
+    user_click_on("Show")
+    assert page.has_content?("Writte scary code")
   end
 
   test "change responsibilities" do
-    edit_user("new responsibilities", :user_responsibilities, "punch giraffes")
+    edit_user(:user_responsibilities, "punch giraffes")
   end
 
   test "empty responsibilities" do

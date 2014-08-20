@@ -12,15 +12,33 @@ one:
 
 two:
   name: Stephen Edwin King
-  email: SK@mail.com	
-  birthplace: Portland
+  email: SK@mail.com  
+  birthplace: Portland, Maine, US
   birthdate: 1947-09-21
   institution: University of Maine 
   career: Writer
   position: QA
   responsibilities: Writte scary code
 
+three:
+  name: Thomas Harris
+  email: TM@mail.com  
+  birthplace: Jackson, Tennessee, U.S.
+  birthdate: 1940-03-11
+  institution:    Baylor University
+  career: English language
+  position: web developer
+  responsibilities: Make the lambs be quiet
 
+four:
+  name: Juan Rulfo
+  email: mail_2@coso.com
+  birthplace: Providence
+  birthdate: 1937-03-15
+  institution: UMSNH
+  career: Ing. en sistemas
+  position: HR
+  responsibilities: Call to Cthulhu
 
 #<% 20.times do |n| %>
 #user_<% n %>:
