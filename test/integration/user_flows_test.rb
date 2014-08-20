@@ -36,7 +36,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     set(:user_responsibilities, responsibility)
     set_avatar(file_route)
     click_button "Create User"
-    sleep(10000010)
   end
 
   def ensure_on_page(route)

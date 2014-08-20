@@ -68,9 +68,4 @@ class UserTest < ActiveSupport::TestCase
     update_user_("user.responsibilities", "make coffe")
   end
 
-  test "update user avatar" do
-    user = users(:one)
-    assert "thumb/missing.png" == user.avatar.url(:thumb)
-  end
-
 end
