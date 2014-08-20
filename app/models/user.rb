@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :name, presence: true
-  validates :emails, presence: true,
+  validates :email, presence: true,
                      format: { with: /\A[^@]+@[^@]+\z/,
                                message: "Please ingrese a valid email"}
   validates :birthplace, presence: true
