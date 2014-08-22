@@ -1,12 +1,9 @@
-<%= form_for([@user, @user.interests.build]) do |f| %>
+<% @user.interests.build %>
+<%= form_for @user do |cosa| %>
 
-  <p>
-   <%= f.label :interest %><br>
-    <%= f.text_field :name %>
-    
-  </p>
+	<p>
+		<%= cosa.label :interests %> <br>
+		<%= cosa.text_field :name, :id => "interests_name" %>
+	</p>
 
-  <p>
-    <%= f.submit %>
-  </p>
 <% end %>

@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+howard:
   name: Howard Phillips Lovecraft
   email: mail_2@coso.com
   birthplace: Providence
@@ -10,7 +10,7 @@ one:
   position: HR
   responsibilities: Call to Cthulhu
 
-two:
+stephen:
   name: Stephen Edwin King
   email: SK@mail.com  
   birthplace: Portland, Maine, US
@@ -20,7 +20,7 @@ two:
   position: QA
   responsibilities: Writte scary code
 
-three:
+thomas:
   name: Thomas Harris
   email: TM@mail.com  
   birthplace: Jackson, Tennessee, U.S.
@@ -30,7 +30,7 @@ three:
   position: web developer
   responsibilities: Make the lambs be quiet
 
-four:
+juan:
   name: Juan Rulfo
   email: mail_2@coso.com
   birthplace: Providence

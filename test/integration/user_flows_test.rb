@@ -23,7 +23,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     ensure_on_page("/users/new")
     set(:user_name, name)
     set(:user_email, email)
@@ -33,6 +34,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     set(:user_career, career)
     set(:user_position, position)
     set(:user_responsibilities, responsibility)
+    set("interests_name", interest)
     set_avatar(file_route)
     click_button "Create User"
   end

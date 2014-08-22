@@ -1,5 +1,5 @@
 <%= form_for @user do |f| %>
-   <p>
+  <p>
     <%= f.label :name %> <br>
     <%= f.text_field :name %> <br>
   </p>
@@ -35,8 +35,11 @@
       <%= f.text_field :position %>
     </p>
 
+    <p>
+      <strong> interest </strong>
+      <%= render "interests/form" %>
+    </p>
    
-
    <p>
     <%= f.label :responsibilities %> <br>
     <%= f.text_area :responsibilities %>
