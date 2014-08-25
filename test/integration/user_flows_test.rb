@@ -274,7 +274,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   #  edit_user()
   #end
 
-  
 
   test "edit responsibilities" do
     edit_user(:user_responsibilities, "punch giraffes")
