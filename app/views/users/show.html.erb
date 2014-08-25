@@ -27,10 +27,8 @@
     <p> <%= @user.position %> </p>
 
 
-    <p>
-      <strong>interest</strong>
-      <%= render "interests/interest" %>
-    </p>
+    <strong>Interest: </strong>
+    <p><%= render @user.interests%></p>
 
     <strong> Responsabilidades: </strong>
     <p> <%= @user.responsibilities %> </p>

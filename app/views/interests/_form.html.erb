@@ -1,9 +1,9 @@
 <% @user.interests.build %>
-<%= form_for @user do |cosa| %>
+<%= form_for @user do |form| %>
 
 	<p>
-		<%= cosa.label :interests %> <br>
-		<%= cosa.text_field :name, :id => "interests_name" %>
+		<%= form.label :interests %> <br>
+		<%= form.text_field :name, :id => "interests_name" %>
 	</p>
 
 <% end %>

@@ -12,14 +12,12 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
 
   test "display panel_div" do
     display_perfil()
-    #assert page.has_content?("User1") 
     assert page.has_selector?("div#profile-avatar")
   end
 
 
   test "display avatar_div" do
     display_perfil()
-    #image = find("div#profile-avatar").find("img")["src"]
     assert page.has_selector?("div#profile-avatar")
   end
 

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   validates :institution, presence: true
   validates :career, presence: true
+  validates :position, presence: true
   validates :responsibilities, presence: true
  
   has_attached_file :avatar, 
