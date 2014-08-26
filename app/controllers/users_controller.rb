@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @interest = Interest.new
+    @interest = @user.interests.build
   end
 
   def create
