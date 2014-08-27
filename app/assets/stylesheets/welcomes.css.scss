@@ -3,7 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body{
-	background-color: #5882FA;
+	
+background: rgba(19,100,147,0.86);
+background: -moz-linear-gradient(45deg, rgba(19,100,147,0.86) 25%, rgba(19,100,147,0.86) 26%, rgba(19,100,147,0.89) 53%, rgba(19,100,147,0.9) 68%, rgba(19,100,147,1) 99%, rgba(19,100,147,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(25%, rgba(19,100,147,0.86)), color-stop(26%, rgba(19,100,147,0.86)), color-stop(53%, rgba(19,100,147,0.89)), color-stop(68%, rgba(19,100,147,0.9)), color-stop(99%, rgba(19,100,147,1)), color-stop(100%, rgba(19,100,147,1)));
+background: -webkit-linear-gradient(45deg, rgba(19,100,147,0.86) 25%, rgba(19,100,147,0.86) 26%, rgba(19,100,147,0.89) 53%, rgba(19,100,147,0.9) 68%, rgba(19,100,147,1) 99%, rgba(19,100,147,1) 100%);
+background: -o-linear-gradient(45deg, rgba(19,100,147,0.86) 25%, rgba(19,100,147,0.86) 26%, rgba(19,100,147,0.89) 53%, rgba(19,100,147,0.9) 68%, rgba(19,100,147,1) 99%, rgba(19,100,147,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(19,100,147,0.86) 25%, rgba(19,100,147,0.86) 26%, rgba(19,100,147,0.89) 53%, rgba(19,100,147,0.9) 68%, rgba(19,100,147,1) 99%, rgba(19,100,147,1) 100%);
+background: linear-gradient(45deg, rgba(19,100,147,0.86) 25%, rgba(19,100,147,0.86) 26%, rgba(19,100,147,0.89) 53%, rgba(19,100,147,0.9) 68%, rgba(19,100,147,1) 99%, rgba(19,100,147,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#136493', endColorstr='#136493', GradientType=1 );
+
 }
 
 .top{ 
