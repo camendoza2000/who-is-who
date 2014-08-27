@@ -23,7 +23,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     ensure_on_page("/users/new")
     set(:user_name, name)
     set(:user_email, email)
@@ -33,6 +34,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     set(:user_career, career)
     set(:user_position, position)
     set(:user_responsibilities, responsibility)
+    set("interests_name", interest)
     set_avatar(file_route)
     click_button "Create User"
   end
@@ -51,7 +53,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     set_avatar(file_route = "app/assets/images/missing.png")
     click_button "Update User"
     find("tr", :text => "Howard Phillips Lovecraft").click_link("Show")
-    assert page.has_text? new_param
   end
 
   def user_click_on(name = "Stephen Edwin King", x)
@@ -69,6 +70,23 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_text?("Writer")
     assert page.has_content?("QA")
     assert page.has_content?("Writte scary code")
+    assert page.has_content?("dance")
+    image = page.find("img")["src"]
+    assert image.include? "missing.png"
+  end
+
+  test "create user" do
+    create_user("new user")
+    user_click_on("new user", "Show")
+    assert page.has_content?("new user")
+    assert page.has_content?( "mail@coso.com")
+    assert page.has_content? (" Maida Vale, London, United Kingdom")
+    assert page.has_content? ("University of Manchester")
+    assert page.has_content? ("Mathematics")
+    assert page.has_content? ("QA")
+    assert page.has_content? ("Be a great code writer")
+    assert page.has_content?("1912-06-23")
+    assert page.has_content?( "cooking")
     image = page.find("img")["src"]
     assert image.include? "missing.png"
   end
@@ -126,7 +144,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "test/fixtures/test.txt", 
-               d = "23", m = "June", y = 1912)   
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )   
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -138,7 +157,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "test/fixtures/false_image.png", 
-               d = "23", m = "June", y = 1912)   
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -146,6 +166,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit email" do
     edit_user(:user_email, "cthulhu@gmail.net")
+    assert page.has_text?("cthulhu@gmail.net")
   end
 
   test "empty email" do
@@ -156,7 +177,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -167,13 +189,16 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                career = "Mathematics", 
                position = "QA", 
                responsibility = "Be a great code writer", 
-               file_route = "app/assets/images/missing.png")
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
    assert page.assert_selector("div.field_with_errors")
   end
 
 
   test "edit birthplace" do
     edit_user(:user_birthplace, "Comala")
+    assert page.has_text?("Comala")
   end
 
   test "empty birthplace" do
@@ -184,7 +209,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     assert page.assert_selector("div.field_with_errors")
   end
 
@@ -213,6 +239,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   
   test "edit institution" do
     edit_user(:user_institution, "UMSNH.")
+    assert page.has_text?("UMSNH")
   end
 
   test "empty institution" do
@@ -223,19 +250,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     assert page.assert_selector("div.field_with_errors")
   end
 
   test "edit career" do
     edit_user(:user_career, "Ing. en Sistemas.")
+    assert page.has_text?("Ing. en Sistemas")
   end
 
- test "edit position" do
-    edit_user(:user_position, "algo mas.")
-  end
-
-  test "empty career" do
+   test "empty career" do
     create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
                birthplace = " Maida Vale, London, United Kingdom", 
                institution = "University of Manchester", 
@@ -243,13 +268,50 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     assert page.assert_selector("div.field_with_errors")
   end
 
+  test "edit position" do
+    edit_user(:user_position, "HR")
+    assert page.has_text?("HR")
+  end
+
+  test "empty position" do
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = nil, 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
+    assert page.assert_selector("div.field_with_errors")
+  end
+
+  test "edit interest" do
+    edit_user("interests_name", "DANCE")
+    assert page.has_text?("DANCE")
+  end
+
+  test "empty interest" do
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 1912, 
+               interest = nil )
+    assert page.assert_selector("div.field_with_errors")
+  end
 
   test "edit responsibilities" do
     edit_user(:user_responsibilities, "punch giraffes")
+    assert page.has_text?("punch giraffes")
   end
 
   test "empty responsibilities" do
@@ -260,7 +322,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = nil, 
                file_route = "app/assets/images/missing.png", 
-               d = "23", m = "June", y = 1912)
+               d = "23", m = "June", y = 1912, 
+               interest = "cooking" )
     assert page.assert_selector("div.field_with_errors")
   end
 

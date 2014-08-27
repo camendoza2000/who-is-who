@@ -1,7 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Interest2
+  name: dance
+  user: howard
 
 two:
-  name: Interest1
+  name: dance
+  user: stephen
+
+three:
+  name: dance
+  user: thomas
+
+four:
+  name: dance
+  user: juan

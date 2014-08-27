@@ -2,14 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
    
-  def update_user_(attribute, new_info)
-    user = users(:one)
-    attribute = new_info
-    user.save
-    assert attribute == new_info
-  end
-
-  test "no name user" do 
+   test "no name user" do 
     user = User.new
     assert_not user.save, "Saved the user without name"
   end
@@ -22,7 +15,7 @@ class UserTest < ActiveSupport::TestCase
 
    test "delete user" do 
     counter_user = User.count
-    user = users(:three)
+    user = users(:juan)
     user.save
     user.destroy
     assert counter_user -1 == User.count, "User not deleted" 
@@ -37,35 +30,59 @@ class UserTest < ActiveSupport::TestCase
 
 
   test "update user name" do 
-    update_user_("user.name", "new name")
+    user = users(:howard)
+    user.name = "new name"
+    user.save
+    assert user.name == "new name"
   end
 
   test "update user email" do
-    update_user_("user.email", "nuevo@mail.com")
+    user = users(:howard)
+    user.email = "nuevo@mail.com"
+    user.save
+    assert user.email == "nuevo@mail.com"
   end
 
   test "update user birthplace" do
-    update_user_("user.birthplace", "Colama, Colima, México")
+    user = users(:howard)
+    user.birthplace = "Colama, Colima, México"
+    user.save
+    assert user.birthplace == "Colama, Colima, México"
   end  
 
   test "update user birthdate" do
-    update_user_("user_birthdate", "2000-01-01")
+    user = users(:howard)
+    user.birthdate = 2000-01-01
+    user.save
+    assert user.birthdate == 2000-01-01
   end
 
   test "update user institution" do
-    update_user_("user.institution", "CNCI")
+    user = users(:howard)
+    user.institution = "CNCI"
+    user.save
+    assert user.institution == "CNCI"
   end
 
   test "update user career" do
-    update_user_("user.career", "Code writter")
+    user = users(:howard)
+    user.career = "Code writter"
+    user.save
+    assert user.career == "Code writter"
   end
 
   test "update user position" do
-    update_user_("user.position", "CEO")
+    user = users(:howard)
+    user.position = "CEO"
+    user.save
+    assert user.position == "CEO"
   end
 
   test "update user responsibilities" do
-    update_user_("user.responsibilities", "make coffe")
+    user = users(:howard)
+    user.responsibilities = "make coffe"
+    user.save
+    assert user.responsibilities == "make coffe"
   end
 
 end

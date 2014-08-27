@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   validates :institution, presence: true
   validates :career, presence: true
+  validates :position, presence: true
   validates :responsibilities, presence: true
  
   has_attached_file :avatar, 
@@ -20,6 +21,10 @@ class User < ActiveRecord::Base
 
   validates_attachment_presence :avatar 
 
+  validates :interests, presence: true
+
   has_many :interests
+
+  accepts_nested_attributes_for :interests
   
 end
