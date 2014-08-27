@@ -53,7 +53,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     set_avatar(file_route = "app/assets/images/missing.png")
     click_button "Update User"
     find("tr", :text => "Howard Phillips Lovecraft").click_link("Show")
-    assert page.has_text? new_param
   end
 
   def user_click_on(name = "Stephen Edwin King", x)
@@ -167,6 +166,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit email" do
     edit_user(:user_email, "cthulhu@gmail.net")
+    assert page.has_text?("cthulhu@gmail.net")
   end
 
   test "empty email" do
@@ -198,6 +198,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit birthplace" do
     edit_user(:user_birthplace, "Comala")
+    assert page.has_text?("Comala")
   end
 
   test "empty birthplace" do
@@ -238,6 +239,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   
   test "edit institution" do
     edit_user(:user_institution, "UMSNH.")
+    assert page.has_text?("UMSNH")
   end
 
   test "empty institution" do
@@ -255,6 +257,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit career" do
     edit_user(:user_career, "Ing. en Sistemas.")
+    assert page.has_text?("Ing. en Sistemas")
   end
 
    test "empty career" do
@@ -272,6 +275,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit position" do
     edit_user(:user_position, "HR")
+    assert page.has_text?("HR")
   end
 
   test "empty position" do
@@ -289,6 +293,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit interest" do
     edit_user("interests_name", "DANCE")
+    assert page.has_text?("DANCE")
   end
 
   test "empty interest" do
@@ -306,6 +311,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test "edit responsibilities" do
     edit_user(:user_responsibilities, "punch giraffes")
+    assert page.has_text?("punch giraffes")
   end
 
   test "empty responsibilities" do
