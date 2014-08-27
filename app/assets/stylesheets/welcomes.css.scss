@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+	border: 2px dotted red;
+}
+
 body{
 background: rgba(24,154,202,0.87);
 background: -moz-linear-gradient(45deg, rgba(24,154,202,0.87) 0%, rgba(24,154,202,0.87) 26%, rgba(19,100,147,0.86) 53%, rgba(19,100,147,0.86) 57%, rgba(19,100,147,0.95) 85%, rgba(19,100,147,0.95) 100%);
@@ -11,6 +15,47 @@ background: -o-linear-gradient(45deg, rgba(24,154,202,0.87) 0%, rgba(24,154,202,
 background: -ms-linear-gradient(45deg, rgba(24,154,202,0.87) 0%, rgba(24,154,202,0.87) 26%, rgba(19,100,147,0.86) 53%, rgba(19,100,147,0.86) 57%, rgba(19,100,147,0.95) 85%, rgba(19,100,147,0.95) 100%);
 background: linear-gradient(45deg, rgba(24,154,202,0.87) 0%, rgba(24,154,202,0.87) 26%, rgba(19,100,147,0.86) 53%, rgba(19,100,147,0.86) 57%, rgba(19,100,147,0.95) 85%, rgba(19,100,147,0.95) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#189aca', endColorstr='#136493', GradientType=1 );
+}
+
+.bubble
+{
+position: relative;
+width: 250px;
+height: 60px;
+padding: 0px;
+background: #b48484;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #044c81 solid 2px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -15px;
+left: 186px;
+}
+
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 16px 16px 0;
+border-color: #044c81 transparent;
+display: block;
+width: 0;
+z-index: 0;
+bottom: -18px;
+left: 185px;
 }
 
 .top{ 
