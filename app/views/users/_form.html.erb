@@ -36,8 +36,8 @@
     </p>
 
     <p>
-      <%= f.fields_for :interests do |builder| %>
-        <%= render "interest_fields", :f => builder %>
+      <%= f.fields_for :interests do |interest_form| %>
+        <%= render "interest_fields", :f => interest_form %>
       <% end %>
     </p>
    
