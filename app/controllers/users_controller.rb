@@ -50,6 +50,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :avatar, :responsibilities, :email, :birthplace,
-                     :birthdate, :institution, :career, :position)
+                     :birthdate, :institution, :career, :position, interests_attributes: [:id, :name])
     end
 end

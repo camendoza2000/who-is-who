@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 
   validates_attachment_presence :avatar 
 
+  validates :interests, presence: true
+
   has_many :interests
 
   accepts_nested_attributes_for :interests

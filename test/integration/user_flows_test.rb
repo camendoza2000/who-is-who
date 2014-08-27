@@ -76,6 +76,22 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert image.include? "missing.png"
   end
 
+  test "create user" do
+    create_user("new user")
+    user_click_on("new user", "Show")
+    #assert page.has_content?("new user")
+    #assert page.has_content?( "mail@coso.com" )
+    #assert page.has_content? (" Maida Vale, London United Kingdom" )
+    #assert page.has_content? ("University of Manchester" )
+    #assert page.has_content? ("Mathematics" )
+    #assert page.has_content? ("QA" )
+    #assert page.has_content? ("Be a great code writer" )
+    #assert page.has_content?("1912-06-23")
+    assert page.has_content?( "cooking" )
+    #image = page.find("img")["src"]
+    #assert image.include? "missing.png"
+  end
+
   test "edit avatar" do
     create_user("edit avatar")
     ensure_on_page("/users/")
@@ -174,6 +190,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                position = "QA", 
                responsibility = "Be a great code writer", 
                file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 1912, 
                interest = "cooking" )
    assert page.assert_selector("div.field_with_errors")
   end
@@ -270,10 +287,22 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.assert_selector("div.field_with_errors")
   end
 
-  #test "edit interest" do
-  #  edit_user()
-  #end
+  test "edit interest" do
+    edit_user("interests_name", "DANCE")
+  end
 
+  test "empty interest" do
+    create_user(name = "Alan Mathison Turing", email = "mail@coso.com", 
+               birthplace = " Maida Vale, London, United Kingdom", 
+               institution = "University of Manchester", 
+               career = "Mathematics", 
+               position = "QA", 
+               responsibility = "Be a great code writer", 
+               file_route = "app/assets/images/missing.png", 
+               d = "23", m = "June", y = 1912, 
+               interest = nil )
+    assert page.assert_selector("div.field_with_errors")
+  end
 
   test "edit responsibilities" do
     edit_user(:user_responsibilities, "punch giraffes")

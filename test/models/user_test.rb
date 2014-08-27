@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
    
   def update_user_(attribute, new_info)
-    user = users(:one)
+    user = users(:howard)
     attribute = new_info
     user.save
     assert attribute == new_info
@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
 
    test "delete user" do 
     counter_user = User.count
-    user = users(:three)
+    user = users(:juan)
     user.save
     user.destroy
     assert counter_user -1 == User.count, "User not deleted" 
