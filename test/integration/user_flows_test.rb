@@ -79,17 +79,17 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "create user" do
     create_user("new user")
     user_click_on("new user", "Show")
-    #assert page.has_content?("new user")
-    #assert page.has_content?( "mail@coso.com" )
-    #assert page.has_content? (" Maida Vale, London United Kingdom" )
-    #assert page.has_content? ("University of Manchester" )
-    #assert page.has_content? ("Mathematics" )
-    #assert page.has_content? ("QA" )
-    #assert page.has_content? ("Be a great code writer" )
-    #assert page.has_content?("1912-06-23")
-    assert page.has_content?( "cooking" )
-    #image = page.find("img")["src"]
-    #assert image.include? "missing.png"
+    assert page.has_content?("new user")
+    assert page.has_content?( "mail@coso.com")
+    assert page.has_content? (" Maida Vale, London, United Kingdom")
+    assert page.has_content? ("University of Manchester")
+    assert page.has_content? ("Mathematics")
+    assert page.has_content? ("QA")
+    assert page.has_content? ("Be a great code writer")
+    assert page.has_content?("1912-06-23")
+    assert page.has_content?( "cooking")
+    image = page.find("img")["src"]
+    assert image.include? "missing.png"
   end
 
   test "edit avatar" do
