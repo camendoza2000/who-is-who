@@ -2,9 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* * {
+* {
 	border: 1px dotted red;
-} */
+}  
+
+#wrapper {
+	//width: 20%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	}
+ 
+.accordionButton {	
+	width: 98%;
+	float: left;
+	//background: #003366;
+	//border: 1px solid #00437a;
+	cursor: pointer;
+	position: relative;
+	}
+ 
+.accordionContent {	
+	//width: 20%;
+	float: left;
+	background: #95B1CE;
+	display: none;
+	}
 
 body{
 background: rgba(24,154,202,0.87);
@@ -76,8 +99,12 @@ left: 185px;
 	//background-color: #dcdcdc;
 }
 
+#centre-text{
+	text-align: center;
+}
+
 #centre-table{
-	margin: 34px 12px 34px 12px;
+	margin: 34px 0px 34px 10px;
 }
 
 #fancy{
@@ -86,16 +113,13 @@ left: 185px;
 	font-weight: bold;
 }
 
-
 #logo{
 	display: block;
 	margin-left: 50px;
 }
 
-#no-style-list{
-	font-size: 1.3em;
-	list-style-type: none;
-
+#blue_font{
+	color: #00437a;
 }
 
 #panel{
@@ -104,6 +128,7 @@ left: 185px;
 	float: left;
 	height: 70%;
 	position: relative;
+	margin-left: 50px;
 	width: 21%;
 }
 
@@ -113,20 +138,77 @@ left: 185px;
 }
 
 #photo-show{
-	background-color: white;
+	background: #dedede;
 	float: right;
 	position: relative;
 	height: 70%;
-	width: 805px;
-	margin-right: 15px;
-	margin-left: 15px;
+	width: 855px;
+	margin-right: 50px;
+	//margin-left: 15px;
 	overflow: auto;
 }
 
 #show{
 	height: 900px;
-	width: 1100px;
+	//width: 1260px;
 	margin: 0 auto;
+}
+
+#polaroid{
+	background-color: white;
+}
+
+#polaroid-row{
+	margin-top: 10px;
+}
+
+.polaroids a:after{
+	content: attr(title);
+}
+
+.polaroids a {
+	-webkit-transform: rotate(-2deg);
+	-moz-transform: rotate(-2deg);
+}
+
+/* Rotate all even images 2 degrees */
+.polaroids li:nth-child(even) a {
+-webkit-transform: rotate(2deg);
+-moz-transform: rotate(2deg);
+}
+ 
+/* Don't rotate every third image, but offset its position */
+.polaroids li:nth-child(3n) a {
+-webkit-transform: none;
+-moz-transform: none;
+position: relative;
+top: -5px;
+}
+ 
+/* Rotate every fifth image by 5 degrees and offset it */
+.polaroids li:nth-child(5n) a {
+-webkit-transform: rotate(5deg);
+-moz-transform: rotate(5deg);
+position: relative;
+right: 5px;
+}
+ 
+/* Keep default rotate for every eighth, but offset it */
+.polaroids li:nth-child(8n) a {
+position: relative;
+top: 8px;
+right: 5px;
+}
+ 
+/* Keep default rotate for every eleventh, but offset it */
+.polaroids li:nth-child(11n) a {
+position: relative;
+top: 3px;
+left: -5px;
+}
+
+.table_image{
+	margin-right: 5px;
 }
 
 #title{
@@ -138,3 +220,4 @@ left: 185px;
 	text-align: center;
 	vertical-align: middle;
 }
+

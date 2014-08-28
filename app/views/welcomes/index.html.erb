@@ -20,25 +20,54 @@
       <input type="text" placeholder="Search..." required>
       <input type="button" value="Search">
     </form>
-    <ul id="no-style-list">
-      <li>Intereses</li>
-      <li>Originario de</li>
-      <li>Escuela</li>
-      <li>Mes de Cumpleaños</li>
-      <li>Puesto</li>
+    
+    <div id="wrapper">
+      <h3 class="accordionButton" id="blue_font">Intereses</h3>
+      <div class="accordionContent">
+        <p>
+          hola
+        </p>
+      </div>
+      <h3 class="accordionButton" id="blue_font">Originario de</h3>
+      <div class="accordionContent">
+        <p>
+          hola
+        </p>
+      </div>
+      <h3 class="accordionButton" id="blue_font">Escuela</h3>
+      <div class="accordionContent">
+        <p>
+          hola
+        </p>
+      </div>
+      <h3 class="accordionButton" id="blue_font">Mes de Cumpleaños</h3>
+      <div class="accordionContent">
+        <p>
+          hola
+        </p>
+      </div>
+      <h3 class="accordionButton" id="blue_font">Puesto</h3>
+      <div class="accordionContent">
+        <p>
+          hola
+        </p>
+      </div>
 
-    </ul>
+    </div>
   </div>
 
     <div id="photo-show">
 
-      <table id="centre-table">
+      <table id="centre-table" class="polaroids">
         <% m = 0 %>
         <% for i in 1..row_count %>
-        <tr>
+        <tr id="polaroid-row">
             <% @users.drop(m).each_with_index do |user, m| break if m == 6 %>
-              <td>
+              <td id="polaroid">
                 <%=  image_tag(user.avatar.url(:thumb), id: user.id, class: "table_image") %> 
+                <p id="centre-text">
+                  <%= user.name %>
+                </p>
               </td>
             <% end %>
             <% m += 6 %> 
