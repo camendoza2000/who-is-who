@@ -5,12 +5,12 @@ $(document).ready(function(){
     $("#photo-show").load("/users/"+ userId);
   });
 
-  $("#accordionButton").click(function(){
-    $("#accordionContent").slideUp("normal");
+  $("div#accordionButton").click(function(){
+    $("div#accordionContent").slideUp("normal");
     $(this).next().slideDown("normal");
   });
 
-  $("#accordionContent").hide();
+  $("div#accordionContent").hide();
 
 }); 
   
