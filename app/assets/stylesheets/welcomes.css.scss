@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-* {
-	border: 2px dotted red;
-}
+/* * {
+	border: 1px dotted red;
+} */
 
 body{
 background: rgba(24,154,202,0.87);
@@ -23,7 +23,7 @@ position: relative;
 width: 250px;
 height: 60px;
 padding: 0px;
-background: #b48484;
+background: #dedede;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
@@ -36,7 +36,7 @@ content: '';
 position: absolute;
 border-style: solid;
 border-width: 15px 15px 0;
-border-color: #FFFFFF transparent;
+border-color: #dedede transparent;
 display: block;
 width: 0;
 z-index: 1;
@@ -65,23 +65,15 @@ left: 185px;
 
 
 #banner{
-	border-radius: 10px;
-	border: 2px solid #044c81;
+	//border-radius: 10px;
+	//border: 2px solid #044c81;
 	float: right;
 	margin-right: 200px;
 	margin-top: 15px;
-	height: 60px;
-	width: 250px;
+	//height: 60px;
+	//width: 250px;
 	position: relative;
-	background: rgba(222,222,222,0.67);
-	background: -moz-linear-gradient(top, rgba(222,222,222,0.67) 0%, rgba(222,222,222,0.69) 23%, rgba(222,222,222,0.73) 57%, rgba(222,222,222,0.77) 69%, rgba(222,222,222,0.82) 85%, rgba(222,222,222,0.82) 96%);
-	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,222,222,0.67)), color-stop(23%, rgba(222,222,222,0.69)), color-stop(57%, rgba(222,222,222,0.73)), color-stop(69%, rgba(222,222,222,0.77)), color-stop(85%, rgba(222,222,222,0.82)), color-stop(96%, rgba(222,222,222,0.82)));
-	background: -webkit-linear-gradient(top, rgba(222,222,222,0.67) 0%, rgba(222,222,222,0.69) 23%, rgba(222,222,222,0.73) 57%, rgba(222,222,222,0.77) 69%, rgba(222,222,222,0.82) 85%, rgba(222,222,222,0.82) 96%);
-	background: -o-linear-gradient(top, rgba(222,222,222,0.67) 0%, rgba(222,222,222,0.69) 23%, rgba(222,222,222,0.73) 57%, rgba(222,222,222,0.77) 69%, rgba(222,222,222,0.82) 85%, rgba(222,222,222,0.82) 96%);
-	background: -ms-linear-gradient(top, rgba(222,222,222,0.67) 0%, rgba(222,222,222,0.69) 23%, rgba(222,222,222,0.73) 57%, rgba(222,222,222,0.77) 69%, rgba(222,222,222,0.82) 85%, rgba(222,222,222,0.82) 96%);
-	background: linear-gradient(to bottom, rgba(222,222,222,0.67) 0%, rgba(222,222,222,0.69) 23%, rgba(222,222,222,0.73) 57%, rgba(222,222,222,0.77) 69%, rgba(222,222,222,0.82) 85%, rgba(222,222,222,0.82) 96%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dedede', endColorstr='#dedede', GradientType=0 );
-
+	//background-color: #dcdcdc;
 }
 
 #centre-table{
