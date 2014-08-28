@@ -20,7 +20,7 @@
       <input type="text" placeholder="Search..." required>
       <input type="button" value="Search">
     </form>
-    
+
     <div id="wrapper">
       <h3 class="accordionButton" id="blue_font">Intereses</h3>
       <div class="accordionContent">
@@ -58,12 +58,12 @@
 
     <div id="photo-show">
 
-      <table id="centre-table" class="polaroids">
+      <table id="centre-table" >
         <% m = 0 %>
         <% for i in 1..row_count %>
-        <tr id="polaroid-row">
+        <tr>
             <% @users.drop(m).each_with_index do |user, m| break if m == 6 %>
-              <td id="polaroid">
+              <td class="polaroids" id="polaroid-format">
                 <%=  image_tag(user.avatar.url(:thumb), id: user.id, class: "table_image") %> 
                 <p id="centre-text">
                   <%= user.name %>

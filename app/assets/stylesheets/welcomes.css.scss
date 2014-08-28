@@ -7,7 +7,6 @@
 }  
 
 #wrapper {
-	//width: 20%;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -16,14 +15,10 @@
 .accordionButton {	
 	width: 98%;
 	float: left;
-	//background: #003366;
-	//border: 1px solid #00437a;
 	cursor: pointer;
-	position: relative;
 	}
  
 .accordionContent {	
-	//width: 20%;
 	float: left;
 	background: #95B1CE;
 	display: none;
@@ -88,15 +83,10 @@ left: 185px;
 
 
 #banner{
-	//border-radius: 10px;
-	//border: 2px solid #044c81;
 	float: right;
 	margin-right: 200px;
 	margin-top: 15px;
-	//height: 60px;
-	//width: 250px;
 	position: relative;
-	//background-color: #dcdcdc;
 }
 
 #centre-text{
@@ -105,6 +95,8 @@ left: 185px;
 
 #centre-table{
 	margin: 34px 0px 34px 10px;
+	border-collapse: separate;
+	border-spacing: 6px 10px;
 }
 
 #fancy{
@@ -144,41 +136,38 @@ left: 185px;
 	height: 70%;
 	width: 855px;
 	margin-right: 50px;
-	//margin-left: 15px;
 	overflow: auto;
 }
 
 #show{
 	height: 900px;
-	//width: 1260px;
 	margin: 0 auto;
 }
 
-#polaroid{
+#polaroid-format{
 	background-color: white;
 }
 
-#polaroid-row{
-	margin-top: 10px;
-}
 
-.polaroids a:after{
+.polaroids td:after{
 	content: attr(title);
 }
 
-.polaroids a {
+.polaroids td{
 	-webkit-transform: rotate(-2deg);
 	-moz-transform: rotate(-2deg);
+	background-color: white;
+	margin-top: 10px;
 }
 
 /* Rotate all even images 2 degrees */
-.polaroids li:nth-child(even) a {
+.polaroids td:nth-child(even) a {
 -webkit-transform: rotate(2deg);
 -moz-transform: rotate(2deg);
 }
  
 /* Don't rotate every third image, but offset its position */
-.polaroids li:nth-child(3n) a {
+.polaroids td:nth-child(3n) a {
 -webkit-transform: none;
 -moz-transform: none;
 position: relative;
@@ -186,7 +175,7 @@ top: -5px;
 }
  
 /* Rotate every fifth image by 5 degrees and offset it */
-.polaroids li:nth-child(5n) a {
+.polaroids td:nth-child(5n) a {
 -webkit-transform: rotate(5deg);
 -moz-transform: rotate(5deg);
 position: relative;
@@ -194,22 +183,19 @@ right: 5px;
 }
  
 /* Keep default rotate for every eighth, but offset it */
-.polaroids li:nth-child(8n) a {
+.polaroids td:nth-child(8n) a {
 position: relative;
 top: 8px;
 right: 5px;
 }
  
 /* Keep default rotate for every eleventh, but offset it */
-.polaroids li:nth-child(11n) a {
+.polaroids td:nth-child(11n) a {
 position: relative;
 top: 3px;
 left: -5px;
 }
 
-.table_image{
-	margin-right: 5px;
-}
 
 #title{
 	color: #00437a;
