@@ -21,33 +21,33 @@
       <input type="button" value="Search">
     </form>
 
-    <div>
-      <h3 class="accordionButton" id="blue_font">Intereses</h3>
-      <div class="accordionContent">
+    <div id="accordion">
+      <h3  id="blue_font">Intereses</h3>
+      <div >
         <p>
           hola
         </p>
       </div>
-      <h3 class="accordionButton" id="blue_font">Originario de</h3>
-      <div class="accordionContent">
+      <h3  id="blue_font">Originario de</h3>
+      <div >
         <p>
           hola
         </p>
       </div>
-      <h3 class="accordionButton" id="blue_font">Escuela</h3>
-      <div class="accordionContent">
+      <h3  id="blue_font">Escuela</h3>
+      <div >
         <p>
           hola
         </p>
       </div>
-      <h3 class="accordionButton" id="blue_font">Mes de Cumpleaños</h3>
-      <div class="accordionContent">
+      <h3  id="blue_font">Mes de Cumpleaños</h3>
+      <div >
         <p>
           hola
         </p>
       </div>
-      <h3 class="accordionButton" id="blue_font">Puesto</h3>
-      <div class="accordionContent">
+      <h3  id="blue_font">Puesto</h3>
+      <div >
         <p>
           hola
         </p>
@@ -65,7 +65,7 @@
             <% @users.drop(m).each_with_index do |user, m| break if m == 6 %>
               <td id="polaroid-format">
                 <%=  image_tag(user.avatar.url(:thumb), id: user.id, class: "table_image") %> 
-                <p id="centre-text">
+                <p id="polaroid-text">
                   <%= user.name %>
                 </p>
               </td>
