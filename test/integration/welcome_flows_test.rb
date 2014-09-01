@@ -24,7 +24,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
 
   test "back button" do
     display_profile()
-    find("div#photo-show", :link, "button-back" ).click
+    find("div#photo-show").click_link("Back")
     assert current_path == "/welcomes"
   end
 
