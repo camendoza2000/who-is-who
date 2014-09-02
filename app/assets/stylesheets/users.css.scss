@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#back-button{
+  position: absolute;
+  bottom: 0;
+  clear: both;
+}
+
+#name{
+  font-size: 1.8em;
+}
+
+.panel-title{
+  color: #00437a;
+}
+
 #profile-avatar{
   float: left;
   margin: 5px;
@@ -9,7 +23,7 @@
 
 
 #profile-panel{
-  background-color: #F2F2F2;
+  background-color: white;
   margin-top: 5px;
   margin-right: 6px;
   border: 3px solid gray;
@@ -20,9 +34,22 @@
   overflow: auto;
 }
 
-#back-button{
-  position: absolute;
-  bottom: 0;
-  clear: both;
+#responsibilities{
+  background-color: #e4e5e5;
+  height: 8em;
+  overflow: hidden;
+  //display: 8em;
 }
 
+.more-button{
+ color: #00437a;
+ font-size: 0.8em;
+ background-color: #ddeef6;
+ width: 2.8em;
+}
+
+#interests{
+  height: 8em;
+  overflow: hidden;
+  //display: 8em;
+}
