@@ -37,9 +37,12 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem "paperclip"
+gem "jquery-ui-rails"
 
 
 group :development, :test do
 	gem "capybara"
+	gem "capybara-webkit"
 	gem "selenium-webdriver"
+	gem 'meta_request'
 end

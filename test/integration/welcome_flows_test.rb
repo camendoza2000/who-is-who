@@ -6,25 +6,25 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   end
 
   def display_profile()
-    visit("/welcomes/")
+    visit("/welcomes")
     first('img.table_image').click
   end
 
   test "display panel_div" do
     display_profile()
-    assert page.has_selector?("div#profile-avatar")
+    assert page.has_css?("div#photo-show", "div#profile-avatar")
   end
 
 
   test "display avatar_div" do
     display_profile()
-    assert page.has_selector?("div#profile-avatar")
+    assert page.has_css?("div#photo-show","div#profile-avatar")
   end
 
 
   test "back button" do
     display_profile()
-    click_button("Back")
+    find("div#photo-show", :link, "button-back" ).click
     assert current_path == "/welcomes"
   end
 

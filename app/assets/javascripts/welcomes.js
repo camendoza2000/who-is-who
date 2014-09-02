@@ -4,5 +4,11 @@ $(document).ready(function(){
     var userId = this.id
     $("#photo-show").load("/users/"+ userId);
   });
+
+    $("#accordion").accordion({
+      collapsible: true
+    });
+ 
+
 }); 
-    
+  
