@@ -6,7 +6,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   end
 
   def display_profile()
-    visit("/welcomes/")
+    visit("/welcomes")
     first('img.table_image').click
   end
 
@@ -24,7 +24,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
 
   test "back button" do
     display_profile()
-    find("div#photo-show").click_link("Back")
+    find("div#photo-show", :link, "button-back" ).click
     assert current_path == "/welcomes"
   end
 
