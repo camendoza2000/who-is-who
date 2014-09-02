@@ -13,19 +13,19 @@
         <%= render @user.interests %>
       </p>
     </div>  
-     <div class="more-button">More</div> <br>
+     <div class="more-button", id="expand-button-interests">More</div> <br>
 
     <div id="responsibilities">
       <strong class="panel-title"> Responsabilidades: </strong>
       <p> <%= @user.responsibilities %> </p>
     </div>
-    <div class="more-button">More</div>
+    <div class="more-button", id="expand-button-responsibilities">  More</div> <br>
 
     <strong class="panel-title"> Email: </strong>
-    <p> <%= @user.email %> </p>
+    <p class="brillant-blue"> <%= @user.email %> </p>
 
     <strong class="panel-title"> Lugar de nacimiento: </strong>
-    <p> <%= @user.birthplace %> </p>
+    <p class="brillant-blue"> <%= @user.birthplace %> </p>
 
     <strong class="panel-title"> Education: </strong>
     <h5>Institution:</h5>
