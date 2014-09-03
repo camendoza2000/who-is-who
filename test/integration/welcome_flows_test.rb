@@ -3,6 +3,7 @@ require 'test_helper'
 class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
+    Capybara.javascript_driver = :webkit
   end
 
   def display_profile()
@@ -31,7 +32,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   test "user show attributes" do
     display_profile()
     assert page.has_text?("Thomas Harris")
-    assert assert_text("TM@mail.com")
+    assert find("#profile-panel").has_text?("TM@mail.com")
     assert page.has_text?("Jackson, Tennessee, U.S.")
     assert page.has_text?("1940-03-11")
     assert page.has_text?("Baylor University")
@@ -39,8 +40,20 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_content?("web developer")
     assert page.has_content?("Make the lambs be quiet")
     assert page.has_content?("dance")
-    image = page.find("img")["src"]
-    assert image.include? "missing.png"
+    #image = page.find("img")["src"]
+    #assert image.include? "missing.png"
+  end
+
+  test "display responsibilities" do
+    display_profile()
+    find("#expand-button-responsibilities").click
+    assert page.has_text?("END-RESPONSIBILITIES")
+  end
+
+  test "display interests" do
+    display_profile()
+    find("#expand-button-interests").click
+    assert page.has_text?("END-INTERESTS")
   end
 
 end
