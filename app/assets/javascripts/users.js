@@ -1,29 +1,23 @@
-/*jQuery.fn.animateAuto = function(prop, speed, callback){
-    var elem, height, width;
-    return this.each(function(i, el){
-        el = jQuery(el), elem = el.clone().css({"height":"auto","width":"auto"}).appendTo(el.parent());
-        height = elem.css("height"),
-        width = elem.css("width"),
-        elem.remove();
-        
-        if(prop === "height")
-            el.animate({"height":height}, speed, callback);
-        else if(prop === "width")
-            el.animate({"width":width}, speed, callback);  
-        else if(prop === "both")
-            el.animate({"width":width,"height":height}, speed, callback);
-    });  
-}*/
-
-
+  function MoreLess (x){
+    if ($.trim( $(x).text()) == "More") {
+      $(x).text("Less");
+    }
+    else{
+      $(x).text("More");
+    };
+  };
 
 $(document).ready(function(){
   $("#expand-button-responsibilities").click(function(){
-     $("div#responsibilities").toggleClass( "colapse", 800, "easeOutBounce"  );
+    MoreLess(this);
+    $("div#responsibilities").toggleClass( "colapse", 800, "easeOutBounce"  );
+     
   });
 
  $("#expand-button-interests").click(function(){
+    MoreLess(this);
      $("div#interests").toggleClass( "colapse", 800, "easeOutBounce" );
   });
+
 
 });
