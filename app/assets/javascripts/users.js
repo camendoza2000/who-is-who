@@ -1,7 +1,7 @@
 jQuery.fn.animateAuto = function(prop, speed, callback){
     var elem, height, width;
     return this.each(function(i, el){
-        el = jQuery(el), elem = el.clone().css({"height":"auto","width":"auto"}).appendTo("body");
+        el = jQuery(el), elem = el.clone().css({"height":"auto","width":"auto"}).appendTo(el.parent());
         height = elem.css("height"),
         width = elem.css("width"),
         elem.remove();
