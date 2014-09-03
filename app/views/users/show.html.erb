@@ -7,7 +7,7 @@
   <div id="profile-panel">
     <p id="name">  <%= @user.name %> </p>
 
-    <div id="interests">
+    <div id="interests", class="colapse">
       <strong class="panel-title"> Interestst: </strong>
       <p>
         <%= render @user.interests %>
@@ -15,11 +15,14 @@
     </div>  
      <div class="more-button", id="expand-button-interests">More</div> <br>
 
-    <div id="responsibilities">
+    <div id="responsibilities", class="colapse">
       <strong class="panel-title"> Responsabilidades: </strong>
       <p> <%= @user.responsibilities %> </p>
     </div>
-    <div class="more-button", id="expand-button-responsibilities">  More </div> <br>
+    <div class="more-button", id="expand-button-responsibilities">  
+      More
+      <!-- <a href="#", id="expand-button-responsibilities"> More</a> -->
+    </div> <br>
 
     <strong class="panel-title"> Email: </strong>
     <p class="brillant-blue"> <%= @user.email %> </p>

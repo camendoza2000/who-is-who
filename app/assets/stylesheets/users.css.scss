@@ -8,9 +8,10 @@
   clear: both;
 }
 
-#name{
-  font-size: 1.7em;
+.colapse{
+  height: 6.8em;
 }
+
 
 .brillant-blue{
   color: #4faddc;
@@ -41,11 +42,12 @@
 
 #profile-show{
   height: 98%;
+  background-color: white;
 }
 
 #responsibilities{
   background-color: #e4e5e5;
-  height: 6em;
+  //height: 6.8em;
   overflow: hidden;
   position: relative;
 }
@@ -57,8 +59,13 @@
  width: 2.8em;
 }
 
+#name{
+  font-size: 1.7em;
+}
+
+
 #interests{
-  height: 6em;
+  //height: 6.8em;
   overflow: hidden;
   position: relative;
 }

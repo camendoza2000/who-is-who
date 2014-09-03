@@ -1,4 +1,4 @@
-jQuery.fn.animateAuto = function(prop, speed, callback){
+/*jQuery.fn.animateAuto = function(prop, speed, callback){
     var elem, height, width;
     return this.each(function(i, el){
         el = jQuery(el), elem = el.clone().css({"height":"auto","width":"auto"}).appendTo(el.parent());
@@ -13,15 +13,17 @@ jQuery.fn.animateAuto = function(prop, speed, callback){
         else if(prop === "both")
             el.animate({"width":width,"height":height}, speed, callback);
     });  
-}
+}*/
+
+
 
 $(document).ready(function(){
   $("#expand-button-responsibilities").click(function(){
-     $("div#responsibilities").animateAuto( "height", 1000);
+     $("div#responsibilities").removeClass( "colapse" );
   });
 
  $("#expand-button-interests").click(function(){
-     $("div#interests").animateAuto( "height", 1000);
+     $("div#interests").removeClass( "colapse" );
   });
 
 });

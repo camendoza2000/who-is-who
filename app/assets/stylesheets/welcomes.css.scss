@@ -117,7 +117,7 @@ body{
 }
 
 #photo-show{
-	background: #dedede;
+	background: white;
 	float: right;
 	position: relative;
 	height: 70%;
@@ -133,6 +133,7 @@ body{
 
 #polaroid-format{
 	background-color: white;
+	border: 1px solid black;
 }
 
 #polaroid-text{
