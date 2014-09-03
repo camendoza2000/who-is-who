@@ -19,11 +19,11 @@
 
 $(document).ready(function(){
   $("#expand-button-responsibilities").click(function(){
-     $("div#responsibilities").removeClass( "colapse" );
+     $("div#responsibilities").removeClass( "colapse", 800, "easeOutBounce"  );
   });
 
  $("#expand-button-interests").click(function(){
-     $("div#interests").removeClass( "colapse" );
+     $("div#interests").removeClass( "colapse", 800, "easeOutBounce" );
   });
 
 });
