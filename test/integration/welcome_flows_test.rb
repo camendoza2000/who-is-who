@@ -30,7 +30,8 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "user show attributes" do
-    display_profile()
+    page.visit("/welcomes")
+    first('img.table_image').click
     assert page.has_text?("Thomas Harris")
     assert page.has_text?("TM@mail.com")
     assert page.has_text?("Jackson, Tennessee, U.S.")
