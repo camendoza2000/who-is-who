@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'capybara/poltergeist'
 
 class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   setup do
@@ -41,8 +40,8 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_content?("web developer")
     assert page.has_content?("Make the lambs be quiet")
     assert page.has_content?("dance")
-    #image = page.find("img")["src"]
-    #assert image.include? "missing.png"
+    image = page.find("#avatar")["src"]
+    assert image.include? "missing.png"
   end
 
   test "ShowHide responsibilities" do

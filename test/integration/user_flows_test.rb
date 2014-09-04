@@ -3,10 +3,6 @@ require "test_helper"
 class UserFlowsTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
-
-    Capybara.register_driver :selenium do |app|
-      Capybara::Selenium::Driver.new(app, :browser => :chrome)
-    end
   end
 
 
