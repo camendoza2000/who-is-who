@@ -29,10 +29,10 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert current_path == "/welcomes"
   end
 
-  test "user show attributes" do
+  test "user show name" do
     display_profile()
-    #assert page.has_text?("Thomas Harris")
-    assert page.has_text?("TM@mail.com")
+    assert page.has_text?("Thomas Harris")
+    
     #assert page.has_text?("Jackson, Tennessee, U.S.")
     #assert page.has_text?("1940-03-11")
     #assert page.has_text?("Baylor University")
@@ -42,6 +42,11 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     #assert page.has_content?("dance")
     #image = page.find("#avatar")["src"]
     #assert image.include? "missing.png"
+  end
+
+  test "user show email" do
+    display_profile()
+    assert page.has_text?("TM@mail.com")
   end
 
   test "ShowHide responsibilities" do
