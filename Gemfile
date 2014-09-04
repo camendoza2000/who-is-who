@@ -45,4 +45,5 @@ group :development, :test do
 	gem "capybara-webkit"
 	gem "selenium-webdriver"
 	gem 'meta_request'
+	gem "poltergeist"
 end
