@@ -3,7 +3,6 @@ require 'test_helper'
 class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
-    #Capybara.javascript_driver = :webkit
   end
 
   def display_profile()
@@ -32,21 +31,51 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   test "user show name" do
     display_profile()
     assert page.has_text?("Thomas Harris")
-    
-    #assert page.has_text?("Jackson, Tennessee, U.S.")
-    #assert page.has_text?("1940-03-11")
-    #assert page.has_text?("Baylor University")
-    #assert page.has_text?("English language")
-    #assert page.has_content?("web developer")
-    #assert page.has_content?("Make the lambs be quiet")
-    #assert page.has_content?("dance")
-    #image = page.find("#avatar")["src"]
-    #assert image.include? "missing.png"
   end
 
   test "user show email" do
     display_profile()
     assert page.has_text?("TM@mail.com")
+  end
+
+  test "user show birthplace" do
+    display_profile()
+    assert page.has_text?("Jackson, Tennessee, U.S.")
+  end
+
+  test "user show birthdate" do
+    assert page.has_text?("1940-03-11")
+  end
+
+  test "user show institute" do
+    display_profile()
+    assert page.has_text?("Baylor University")
+  end
+
+  test "user show career" do
+    display_profile()
+    assert page.has_text?("English language")
+  end
+
+  test "user show position" do
+    display_profile()
+    assert page.has_content?("web developer")
+  end
+
+  test "user show responsibilities" do
+    display_profile()
+    assert page.has_content?("Make the lambs be quiet")
+  end
+
+  test "user show interests" do
+    display_profile()
+    assert page.has_content?("dance")
+  end
+
+  test "user show avatar" do
+    display_profile()
+    image = page.find("#avatar")["src"]
+    assert image.include? "missing.png"    
   end
 
   test "ShowHide responsibilities" do
