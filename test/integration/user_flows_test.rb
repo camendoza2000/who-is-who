@@ -2,7 +2,8 @@ require "test_helper"
 
 class UserFlowsTest < ActionDispatch::IntegrationTest
   setup do
-    Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
+    #Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
+    Capybara.javascript_driver = :poltergeist
   end
 
 
