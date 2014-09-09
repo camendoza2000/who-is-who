@@ -24,9 +24,11 @@
     <div id="accordion">
       <h3  class="blue_font">Intereses</h3>
       <div >
+        <% @users.each do |user| %>
         <p>
-          
+          <%= render user.interests %>
         </p>
+        <% end %>
       </div>
       <h3  class="blue_font">Originario de</h3>
       <div >
