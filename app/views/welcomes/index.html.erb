@@ -24,9 +24,9 @@
     <div id="accordion">
       <h3  class="blue_font">Intereses</h3>
       <div >
-        <% @users.each do |user| %>
+        <% @interests.each do |interest| %>
         <p>
-          <%= render user.interests %>
+          <%= interest.name %>
         </p>
         <% end %>
       </div>

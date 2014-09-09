@@ -5,6 +5,7 @@ class WelcomesController < ApplicationController
   # GET /welcomes.json
   def index
     @users = User.all
+    @interests = Interest.all
   end
 
 
