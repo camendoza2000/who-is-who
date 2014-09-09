@@ -3,6 +3,7 @@ require 'test_helper'
 class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   setup do
     Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
+    #Capybara.javascript_driver = :poltergeist
   end
 
   def display_profile()
@@ -13,7 +14,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   test "display" do
     display_profile()
     assert page.has_css?("div#photo-show", "div#profile-avatar")
-    assert page.has_css?("div#photo-show","div#profile-avatar")
+    assert page.has_css?("div#photo-show", "div#profile-panel")
     assert page.has_text?("Thomas Harris")
     assert page.has_text?("Jackson, Tennessee, U.S.")
     assert page.has_text?("1940-03-11")
