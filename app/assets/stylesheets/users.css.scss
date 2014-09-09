@@ -2,27 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#profile-avatar{
-  float: left;
-  margin: 5px;
-}
-
-
-#profile-panel{
-  background-color: #F2F2F2;
-  margin-top: 5px;
-  margin-right: 6px;
-  border: 3px solid gray;
-  float: right;
-  height: 500px;
-  position: relative;
-  width: 29%;
-  overflow: auto;
-}
-
 #back-button{
   position: absolute;
   bottom: 0;
   clear: both;
 }
 
+.collapse{
+  height: 6.8em;
+}
+
+
+.brillant-blue{
+  color: #4faddc;
+}
+
+.panel-title{
+  color: #00437a;
+}
+
+#profile-avatar{
+  float: left;
+  margin: 45px;
+  border: 4px solid #05a1dd;
+}
+
+
+#profile-panel{
+  background-color: white;
+  margin-top: 5px;
+  margin-right: 6px;
+  border: 3px solid gray;
+  float: right;
+  height: 100%;
+  position: relative;
+  width: 29%;
+  overflow: auto;
+}
+
+#profile-show{
+  height: 98%;
+  background-color: white;
+}
+
+#responsibilities{
+  background-color: #e4e5e5;
+  overflow: hidden;
+  position: relative;
+}
+
+.more-button{
+ color: #00437a;
+ font-size: 0.8em;
+ background-color: #ddeef6;
+ width: 2.8em;
+}
+
+#name{
+  font-size: 1.7em;
+}
+
+.no-style-link{
+  text-decoration: none;
+}
+
+#interests{
+  overflow: hidden;
+  position: relative;
+}

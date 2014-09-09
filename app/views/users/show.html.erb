@@ -1,37 +1,48 @@
 
 <div id="profile-show">
   <div id="profile-avatar">
-    <%= image_tag @user.avatar.url(:medium)%>
+    <%= image_tag @user.avatar.url(:medium), :id => "avatar" %>
   </div>
 
   <div id="profile-panel">
-    <strong> Nombre: </strong>
-    <p>  <%= @user.name %> </p>
+    <p id="name">  <%= @user.name %> </p>
 
-    <strong> Email: </strong>
-    <p> <%= @user.email %> </p>
+    <div id="interests", class="collapse">
+      <strong class="panel-title"> Interestst: </strong>
+      
+        <%= render @user.interests %>
+      
+    </div>  
+     <div class="more-button" >
+      <a href="#", id="expand-button-interests", class="no-style-link">More</a>  
+     </div> <br>
 
-    <strong> Lugar de nacimiento: </strong>
-    <p> <%= @user.birthplace %> </p>
+    <div id="responsibilities", class="collapse">
+      <strong class="panel-title"> Responsabilidades: </strong>
+      <p> <%= @user.responsibilities %> </p>
+    </div>
+    <div class="more-button">  
+      <a href="#", id="expand-button-responsibilities", class="no-style-link"> More</a> 
+    </div> <br>
 
-    <strong> Fecha de nacimiento: </strong>
-    <p> <%= @user.birthdate %> </p>
+    <strong class="panel-title"> Email: </strong>
+    <p class="brillant-blue"> <%= @user.email %> </p>
 
-    <strong> Education: </strong>
+    <strong class="panel-title"> Lugar de nacimiento: </strong>
+    <p class="brillant-blue"> <%= @user.birthplace %> </p>
+
+    <strong class="panel-title"> Education: </strong>
     <h5>Institution:</h5>
     <p> <%= @user.institution %> </p>
     <h5> Career: </h5>
     <p> <%= @user.career %> </p>
 
-    <strong> Position: </strong>
+    <strong class="panel-title"> Position: </strong>
     <p> <%= @user.position %> </p>
 
-    <p>
-      <%= render @user.interests %>
-    </p>
+    <strong class="panel-title"> Fecha de nacimiento: </strong>
+    <p> <%= @user.birthdate %> </p>
 
-    <strong> Responsabilidades: </strong>
-    <p> <%= @user.responsibilities %> </p>
   </div><br>
 
   <div id="back-button">

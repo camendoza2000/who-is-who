@@ -81,9 +81,9 @@ body{
 
 
 #centre-table{
-	margin: 34px 0px 34px 10px;
+	margin: 34px 0px 34px 0px;
 	border-collapse: separate;
-	border-spacing: 6px 10px;
+	border-spacing: 10px 10px;
 }
 
 #fancy{
@@ -117,11 +117,11 @@ body{
 }
 
 #photo-show{
-	background: #dedede;
+	background: white;
 	float: right;
 	position: relative;
 	height: 70%;
-	width: 900px;
+	width: 70%;
 	margin-right: 33px;
 	overflow: auto;
 }
@@ -133,6 +133,7 @@ body{
 
 #polaroid-format{
 	background-color: white;
+	border: 1px solid black;
 }
 
 #polaroid-text{
