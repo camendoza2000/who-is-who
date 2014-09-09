@@ -26,23 +26,19 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     image = page.find("#avatar")["src"]
     assert image.include? "missing.png"
 
+    assert page.has_css?(".collapse", :count => 2)
+    
     find("#expand-button-responsibilities").click
     sleep(1)
-    div_class = page.find("div#responsibilities")[:class]
-    assert_not div_class == "collapse"
-    find("#expand-button-responsibilities").click
-    sleep(1)
-    div_class = page.find("div#responsibilities")[:class]
-    assert div_class == "collapse"
+    within("div#responsibilities") do
+      assert page.has_no_css?(".collapse")
+    end
 
     find("#expand-button-interests").click
     sleep(1)
-    div_class = page.find("div#interests")[:class]
-    assert_not div_class == "collapse"
-    find("#expand-button-interests").click
-    sleep(1)
-    div_class = page.find("div#interests")[:class]
-    assert div_class == "collapse"
+    within("div#interests") do
+      assert page.has_no_css?(".collapse")
+    end
   end
 
   
@@ -52,13 +48,6 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert current_path == "/welcomes"
   end
 
- 
-
-  test "ShowHide" do
-    display_profile()
-    
-  end
-
-  
+   
 end
 
