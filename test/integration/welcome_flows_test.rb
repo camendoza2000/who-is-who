@@ -2,8 +2,7 @@ require 'test_helper'
 
 class WelcomeFlowsTest < ActionDispatch::IntegrationTest
   setup do
-    #Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
-    Capybara.javascript_driver = :poltergeist
+    Capybara.current_driver = Capybara.javascript_driver # :seleniun by default
   end
 
   def display_profile()
@@ -25,7 +24,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_content?("dance")
     image = page.find("#avatar")["src"]
     assert image.include? "missing.png"
-    
+
     find("#expand-button-responsibilities").click
     sleep(1)
     div_class = page.find("div#responsibilities")[:class]
