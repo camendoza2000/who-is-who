@@ -26,7 +26,7 @@
       <div >
         <% @interests.each do |interest| %>
         <p>
-          <%= interest.name %>
+          <%= check_box_tag (interest.name ) %> <%= interest.name %>
         </p>
         <% end %>
       </div>
