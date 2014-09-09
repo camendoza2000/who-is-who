@@ -1,5 +1,5 @@
-  function MoreLess (x){
-    if ($.trim( $(x).text()) == "More") {
+  function toggleText (x){
+    if ($.trim( $(x).text()) === "More") {
       $(x).text("Less");
     }
     else{
@@ -9,14 +9,14 @@
 
 $(document).ready(function(){
   $("#expand-button-responsibilities").click(function(){
-    MoreLess(this);
-    $("div#responsibilities").toggleClass( "colapse", 800, "easeOutBounce"  );
+    toggleText(this);
+    $("div#responsibilities").toggleClass( "collapse", 800, "easeOutBounce"  );
      
   });
 
  $("#expand-button-interests").click(function(){
-    MoreLess(this);
-     $("div#interests").toggleClass( "colapse", 800, "easeOutBounce" );
+    toggleText(this);
+     $("div#interests").toggleClass( "collapse", 800, "easeOutBounce" );
   });
 
 

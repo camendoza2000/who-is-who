@@ -29,20 +29,20 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     find("#expand-button-responsibilities").click
     sleep(1)
     div_class = page.find("div#responsibilities")[:class]
-    assert_not div_class == "colapse"
+    assert_not div_class == "collapse"
     find("#expand-button-responsibilities").click
     sleep(1)
     div_class = page.find("div#responsibilities")[:class]
-    assert div_class == "colapse"
+    assert div_class == "collapse"
 
     find("#expand-button-interests").click
     sleep(1)
     div_class = page.find("div#interests")[:class]
-    assert_not div_class == "colapse"
+    assert_not div_class == "collapse"
     find("#expand-button-interests").click
     sleep(1)
     div_class = page.find("div#interests")[:class]
-    assert div_class == "colapse"
+    assert div_class == "collapse"
   end
 
   
