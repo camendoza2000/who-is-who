@@ -24,35 +24,37 @@
     <div id="accordion">
       <h3  class="blue_font">Intereses</h3>
       <div >
+        <ul class="panel-list">
         <% @interests.each do |interest| %>
-        <p>
+          <li>
           <%= check_box_tag (interest.name ) %> <%= interest.name %>
-        </p>
+          </li>
         <% end %>
+        </ul>
       </div>
       <h3  class="blue_font">Originario de</h3>
       <div >
-        <p>
+        <ul class="panel-list">
           
-        </p>
+        </ul>
       </div>
       <h3  class="blue_font">Escuela</h3>
       <div >
-        <p>
+        <ul class="panel-list">
           
-        </p>
+        </ul>
       </div>
       <h3  class="blue_font">Mes de Cumpleaños</h3>
       <div >
-        <p>
+        <ul class="panel-list">
           
-        </p>
+        </ul>
       </div>
       <h3  class="blue_font">Puesto</h3>
       <div >
-        <p>
+        <ul class="panel-list">
           
-        </p>
+        </ul>
       </div>
 
     </div>
