@@ -26,8 +26,8 @@
       <div >
         <ul class="panel-list">
         <% @interests.each do |interest| %>
-          <li>
-          <%= check_box_tag (interest.name ) %> <%= interest.name %>
+          <li class="interest-list">
+          <%= check_box_tag interest.id, "interests_CB"  %> <%= interest.name %>
           </li>
         <% end %>
         </ul>

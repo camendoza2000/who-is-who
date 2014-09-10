@@ -9,6 +9,12 @@ $(document).ready(function(){
       collapsible: true
     });
  
+  $(".interest-list").click(function(){
+    $("input[type=checkbox]:checked").each ( function() {
+      var checkboxId = this.id
+      console.log(checkboxId)
+    })
+  })
 
 }); 
   
