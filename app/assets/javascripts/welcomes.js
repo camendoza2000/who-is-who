@@ -9,13 +9,13 @@ $(document).ready(function(){
       collapsible: true
     });
  
-  $(".interest-list").click(function(){
-    var arr = []
-    $("input[type=checkbox]:checked").each ( function() {
-      arr.push(parseInt(this.id))
-      console.log(arr)
+    $("input[type=checkbox]").click(function() {
+    var arr = [];
+      $("input[type=checkbox]:checked").each(function(){
+        arr.push(parseInt(this.id));
+        console.log(arr);
+      })  
     })
-  })
 
 }); 
   
