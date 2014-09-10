@@ -10,9 +10,10 @@ $(document).ready(function(){
     });
  
   $(".interest-list").click(function(){
+    var arr = []
     $("input[type=checkbox]:checked").each ( function() {
-      var checkboxId = this.id
-      console.log(checkboxId)
+      arr.push(parseInt(this.id))
+      console.log(arr)
     })
   })
 
