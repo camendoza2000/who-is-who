@@ -27,7 +27,7 @@
         <ul class="panel-list">
         <% @interests.each do |interest| %>
           <li class="interest-list">
-          <%= check_box_tag interest.id, "interests_CB"  %> <%= interest.name %>
+          <%= check_box_tag interest.id, 'yes', false, class: "interests-checkbox"  %> <%= interest.name %>
           </li>
         <% end %>
         </ul>
@@ -35,7 +35,7 @@
       <h3  class="blue_font">Originario de</h3>
       <div >
         <ul class="panel-list">
-          
+          <%= check_box_tag "prueba", "NO" %>
         </ul>
       </div>
       <h3  class="blue_font">Escuela</h3>

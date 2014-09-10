@@ -9,12 +9,15 @@ $(document).ready(function(){
       collapsible: true
     });
  
-    $("input[type=checkbox]").click(function() {
-    var arr = [];
-      $("input[type=checkbox]:checked").each(function(){
-        arr.push(parseInt(this.id));
-        console.log(arr);
-      })  
+    var interestsArr = [];
+    $(".interests-checkbox").click(function() {
+      if ($(this).is(":checked")){
+        interestsArr.push(parseInt(this.id));
+      }
+      else{
+        var index = interestsArr.indexOf(parseInt(this.id));
+        interestsArr.splice(index,1);
+      }
     })
 
 }); 
