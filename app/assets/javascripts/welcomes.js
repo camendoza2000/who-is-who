@@ -18,7 +18,15 @@ $(document).ready(function(){
         var index = interestsArr.indexOf(parseInt(this.id));
         interestsArr.splice(index,1);
       }
+   
+       for (var x in interestsArr){
+      $("table").filter($(x)).fadeOut();
+    }
+
     })
+
+    var test = [1,2];
+
 
 }); 
   

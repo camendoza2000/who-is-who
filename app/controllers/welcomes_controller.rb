@@ -21,4 +21,10 @@ class WelcomesController < ApplicationController
 		
 	end
 
+	def grid 
+		if @filtred_users 
+			
+		end
+	end
+
 end
