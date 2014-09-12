@@ -28,6 +28,7 @@
         <% @interests.each do |interest| %>
           <li class="interest-list">
           <%= check_box_tag interest.id, 'yes', false, class: "interests-checkbox"  %> <%= interest.name %>
+          <% @filtered_users %>
           </li>
         <% end %>
         </ul>

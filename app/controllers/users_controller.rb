@@ -43,6 +43,17 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def get_user_id(arr)
+    user_Id = []
+    @interests.find(arr).each do |i|
+      user_Id.push(i.user_id)
+    end
+  end
+
+  def filter_by_interests
+    @filtered_users = User.find(get_user_id(params[:interests_ids]))
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

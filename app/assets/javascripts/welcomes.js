@@ -18,14 +18,21 @@ $(document).ready(function(){
         var index = interestsArr.indexOf(parseInt(this.id));
         interestsArr.splice(index,1);
       }
+
+      var interestsArrToSend  = {interests_ids: interestsArr};
    
+      $.ajax({
+        url: "/users",
+        data: interestsArrToSend
+      })
+    });
+
+
+/*$(".interests-checkbox").click(function() {
+       var test = [1,2];
        for (var x in interestsArr){
-      $("table").filter($(x)).fadeOut();
-    }
-
-    })
-
-    var test = [1,2];
+         $("table").filter($("img#"+x)).fadeOut();
+    }});*/
 
 
 }); 
