@@ -48,6 +48,12 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert current_path == "/welcomes"
   end
 
+  test "interests filter" do
+    visit("/welcomes")
+    #first(".interests-checkbox").set(true)
+    all(".interests-checkbox").each {|i| i.set(true)}
+  end
+
    
 end
 
