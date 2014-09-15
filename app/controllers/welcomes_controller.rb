@@ -6,12 +6,4 @@ class WelcomesController < ApplicationController
     @interests = Interest.all
   end
 
-	
-
-	# def grid 
-		# if @filtred_users 
-			# 
-		# end
-	# end
-
 end
