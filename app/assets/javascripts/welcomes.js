@@ -18,14 +18,26 @@ $(document).ready(function(){
       var index = interestsArr.indexOf(parseInt(this.id));
       interestsArr.splice(index,1);
     }
-  
+    
+    //console.log(interestsArr);
+
+    function sleep(ms) {
+      var start = new Date().getTime();
+      for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > ms){
+          break;
+        }
+      }
+    }
+
+    //sleep(2000);
     var interestsArrToSend  = {interests_ids: interestsArr};
- 
+    console.log(interestsArrToSend);
     $.ajax({
       url: "/users",
       data: interestsArrToSend,
       success: function(data){
-        console.log(data)
+        //console.log(data)
         $("#photo-show").html(data);
       }
     })

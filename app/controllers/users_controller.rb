@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     Interest.find(arr).each do |i|
       user_Id.push(i.user_id)
     end
+    user_Id
   end
 
 
