@@ -50,8 +50,21 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
 
   test "interests filter" do
     visit("/welcomes")
-    #first(".interests-checkbox").set(true)
-    all(".interests-checkbox").each {|i| i.set(true)}
+    first(".interests-checkbox").set(true)
+    first('img.table_image').click
+    assert find("div#interests").has_content?("dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance END-INTERESTS")
+    #find("li", :text => "cooking").find(".interests-checkbox").set(true)
+    #find("li", :text => "read").find(".interests-checkbox").set(true)
+    #find("li", :text => "drink").find(".interests-checkbox").set(true)
+    ##all(".interests-checkbox").each {|i| i.set(true)}
+    #all(".interests-checkbox").each {|i| i.set(false)}
+    #sleep(500)
+  end
+
+  test "two interests" do
+    visit("/welcomes")
+    #find("li", :text => "cooking").find(".interests-checkbox").set(true)
+    #find("li", :text => "read").find(".interests-checkbox").set(true)
   end
 
    

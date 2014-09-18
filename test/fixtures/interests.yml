@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: dance
+  name: cooking
   user: howard
 
 two:
-  name: dance
+  name: read
   user: stephen
 
 three:
@@ -13,5 +13,5 @@ three:
   user: thomas
 
 four:
-  name: dance
+  name: drink
   user: juan
