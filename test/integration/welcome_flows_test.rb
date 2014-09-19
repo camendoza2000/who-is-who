@@ -53,12 +53,6 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     first(".interests-checkbox").set(true)
     first('img.table_image').click
     assert find("div#interests").has_content?("dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance dance END-INTERESTS")
-    #find("li", :text => "cooking").find(".interests-checkbox").set(true)
-    #find("li", :text => "read").find(".interests-checkbox").set(true)
-    #find("li", :text => "drink").find(".interests-checkbox").set(true)
-    ##all(".interests-checkbox").each {|i| i.set(true)}
-    #all(".interests-checkbox").each {|i| i.set(false)}
-    #sleep(500)
   end
 
   test "two interests" do
@@ -68,8 +62,7 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     assert find("div#photo-show").assert_selector("img", :count => 2)
   end
 
-=begin
- test "all interests all users" do
+  test "all interests all users" do
     visit("/welcomes")
     all(".interests-checkbox").each {|i| i.set(true)}
     assert find("div#photo-show").assert_selector("img", :count => 4)
@@ -77,14 +70,11 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
 
   test "from two interests to one" do
     visit("/welcomes")
-    find("li", :text => "cooking").find(".interests-checkbox").set(true)
     find("li", :text => "read").find(".interests-checkbox").set(true)
-    sleep(1)
+    find("li", :text => "cooking").find(".interests-checkbox").set(true)
     find("li", :text => "read").find(".interests-checkbox").set(false)
-    sleep(1)
     assert find("div#photo-show").assert_selector("img", :count => 1)
   end
-=end
 
    
 end
