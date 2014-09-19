@@ -63,23 +63,7 @@
 
     <div id="photo-show">
       <%= render "users/grid" %>
-      <!-- <table id="centre-table" class="polaroids">
-        <% m = 0 %>
-        <% for i in 1..row_count %>
-        <tr>
-            <% @users.drop(m).each_with_index do |user, m| break if m == 6 %>
-              <td id="polaroid-format">
-                <%=  image_tag(user.avatar.url(:thumb), id: user.id, class: "table_image") %> 
-                <p id="polaroid-text">
-                  <%= user.name %>
-                </p>
-              </td>
-            <% end %>
-            <% m += 6 %> 
-        </tr>
-        <% end %>   
-      </table> -->
-
+      
     </div>
 </div>
 
