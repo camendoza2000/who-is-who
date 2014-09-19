@@ -71,7 +71,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_text?("Writer")
     assert page.has_content?("QA")
     assert page.has_content?("Writte scary code")
-    assert page.has_content?("dance")
+    assert page.has_content?("read")
     image = page.find("img")["src"]
     assert image.include? "missing.png"
   end

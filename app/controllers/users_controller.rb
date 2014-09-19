@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def index
     if params[:interests_ids].present?
       @users = User.find(get_user_id(params[:interests_ids]))
-      render "grid"
+      render "_grid"
     else
       @users = User.all 
     end
