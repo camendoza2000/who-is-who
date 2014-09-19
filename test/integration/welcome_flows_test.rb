@@ -61,12 +61,23 @@ class WelcomeFlowsTest < ActionDispatch::IntegrationTest
     #sleep(500)
   end
 
-  #test "two interests" do
-  #  visit("/welcomes")
-  #  find("li", :text => "cooking").find(".interests-checkbox").set(true)
-  #  find("li", :text => "read").find(".interests-checkbox").set(true)
-  #  
-  #end
+  test "two interests" do
+    visit("/welcomes")
+    find("li", :text => "cooking").find(".interests-checkbox").set(true)
+    find("li", :text => "read").find(".interests-checkbox").set(true)
+    sleep(1)
+    assert find("div#photo-show").find("img", :count => 2)
+  end
+
+  test "from two interests to one" do
+    visit("/welcomes")
+    find("li", :text => "cooking").find(".interests-checkbox").set(true)
+    find("li", :text => "read").find(".interests-checkbox").set(true)
+    sleep(1)
+    find("li", :text => "read").find(".interests-checkbox").set(false)
+    sleep(1)
+    assert find("div#photo-show").find("img", :count => 1)
+  end
 
    
 end

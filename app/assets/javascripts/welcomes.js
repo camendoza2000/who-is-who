@@ -21,7 +21,7 @@ $(document).ready(function(){
     
 
     var interestsArrToSend  = {interests_ids: interestsArr};
-    
+
     $.ajax({
       url: "/users",
       data: interestsArrToSend,
