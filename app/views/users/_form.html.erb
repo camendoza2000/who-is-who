@@ -37,6 +37,28 @@
 
     <p>
       <%= f.fields_for :interests do |interest_form| %>
+        
+        <div class="collapse" id="interests_chooser">
+          <table>
+            <% m = 0 %>
+            <% for i in 1..interests_row_count %>
+            <tr>
+              <% @interests.drop(m).each_with_index do |interest, m| break if m == 2 %>
+                <td>
+                   <%= check_box_tag interest.id, 'yes', false, class: "interests-checkbox-chooser"  %> <%= interest.name %>                  
+                </td>
+              <% end %>
+              <% m += 2 %> 
+            </tr>
+            <% end %>   
+          </table>
+        </div>
+
+        </div>  
+          <div class="more-button" id="button-to-right" >
+           <a href="#", id="expand-button-interests_chooser", class="no-style-link">More</a>  
+        </div> <br>
+
         <%= render "interest_fields", :f => interest_form %>
       <% end %>
     </p>

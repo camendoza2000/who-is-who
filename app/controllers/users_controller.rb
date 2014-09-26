@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @interest = @user.interests.build
+    @interests = Interest.all
   end
 
   def create
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      render "new"
+      render "new"   
     end
   end
 
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   def index
     if params[:interests_ids].present?
       @users = User.find(get_user_id(params[:interests_ids]))
-      render "_grid"
+      render :partial => "_grid"
     else
       @users = User.all 
     end

@@ -58,6 +58,10 @@
  width: 2.8em;
 }
 
+#button-to-right{
+  margin-left: 300px;
+}
+
 #name{
   font-size: 1.7em;
 }
@@ -69,4 +73,9 @@
 #interests{
   overflow: hidden;
   position: relative;
+}
+
+#interests_chooser{
+  width: 350px;
+  overflow: hidden;
 }

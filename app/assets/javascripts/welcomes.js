@@ -26,7 +26,7 @@ $(document).ready(function(){
       url: "/users",
       data: interestsArrToSend,
       success: function(data){
-        $("#photo-show").html(data);
+        $("#photo-show").load("users_controller/index");
       }
     })
     

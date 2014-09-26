@@ -16,8 +16,12 @@ $(document).ready(function(){
 
  $("#expand-button-interests").click(function(){
     toggleText(this);
-     $("div#interests").toggleClass( "collapse", 800, "easeOutBounce" );
+    $("div#interests").toggleClass( "collapse", 800, "easeOutBounce" );
   });
 
+  $("#expand-button-interests_chooser").click(function(){
+    toggleText(this);
+    $("div#interests_chooser").toggleClass( "collapse", 800, "easeOutBounce" );
+  });
 
 });
