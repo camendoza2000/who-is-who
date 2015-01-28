@@ -42,7 +42,7 @@ gem "jquery-ui-rails"
 
 group :development, :test do
 	gem "capybara"
-	gem "capybara-webkit"
+	#gem "capybara-webkit"
 	gem "selenium-webdriver"
 	gem 'meta_request'
 	gem "poltergeist"
